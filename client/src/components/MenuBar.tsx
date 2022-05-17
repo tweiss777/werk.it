@@ -10,12 +10,15 @@ export default function MenuBar(){
         // flex box
         <div className="menu-bar-container">
             <div className="menu-bar">
+
                 <Link to='/saved'>
                     <button>Saved Jobs</button>
                 </Link>
+
                 <Link to='/template'>
                     <button>CV Template</button>
                 </Link>
+
                 <Link to='/profile'>
                     <button>Profile Settings</button>
                 </Link>
