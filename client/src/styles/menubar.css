@@ -1,0 +1,17 @@
+.menu-bar-container{
+    @apply bg-gray-200;
+    min-width: 300px;
+    max-width: 500px;
+    height: 100%;
+    box-shadow: 4px 0px 12px -5px ;
+}
+
+
+
+.menu-bar-container > .menu-bar{
+    @apply flex-col;
+
+}
+.menu-bar > .menuItem{
+    margin: 20px 3%;
+}

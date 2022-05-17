@@ -1,31 +1,34 @@
 import React from "react";
 import { Link } from "react-router-dom";
-// this will be hooked to the navigation bar
-export default function MenuBar(){
+import '../styles/menubar.css';
+export default function MenuBar() {
 
-
-
-
-    return(
+    return (
         // flex box
         <div className="menu-bar-container">
-            <div className="menu-bar">
 
+            <div className="menu-bar">
                 <Link to='/saved'>
-                    <button>Saved Jobs</button>
+                    <div className="menuItem">
+                        <button>Saved Jobs</button>
+                    </div>
                 </Link>
 
                 <Link to='/template'>
-                    <button>CV Template</button>
+                    <div className="menuItem">
+                        <button>CV Template</button>
+                    </div>
                 </Link>
 
                 <Link to='/profile'>
-                    <button>Profile Settings</button>
+                    <div className="menuItem">
+                        <button>Profile Settings</button>
+                    </div>
                 </Link>
 
             </div>
         </div>
-        )
+    )
 
 
 
