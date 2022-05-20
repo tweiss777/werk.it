@@ -12,6 +12,11 @@
     @apply flex-col;
 
 }
-.menu-bar > .menuItem{
+
+.profile-info
+.menu-bar .menu-item{
+    text-align: center;
+    border: solid black 2px;
     margin: 20px 3%;
+
 }
