@@ -6,7 +6,13 @@ export default function MenuBar() {
     return (
         // flex box
         <div className="menu-bar-container">
+<<<<<<< HEAD
             
+=======
+            <div className="profile-info">
+                <img alt="donald" src="https://upload.wikimedia.org/wikipedia/commons/5/56/Donald_Trump_official_portrait.jpg" />
+            </div>
+>>>>>>> fb3946781d2ba25c1098a174ebf3933b80ac8724
             <div className="menu-bar">
                 <div className="profile-info">
                     <img src="https://ca.slack-edge.com/T02UUJ406K1-U030MDSN8CW-0ed4d6587952-512" alt="" />

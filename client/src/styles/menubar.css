@@ -17,6 +17,7 @@
 
 }
 
+<<<<<<< HEAD
 .profile-info{
     align-items: center;
     display: flex;
@@ -43,4 +44,12 @@
 .menu-bar .menu-item{
     border: solid black 2px;
     margin: 20px 5%;
+=======
+.profile-info
+.menu-bar .menu-item{
+    text-align: center;
+    border: solid black 2px;
+    margin: 20px 3%;
+
+>>>>>>> fb3946781d2ba25c1098a174ebf3933b80ac8724
 }
