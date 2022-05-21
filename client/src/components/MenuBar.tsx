@@ -1,6 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import '../styles/menubar.css';
+import Logo from '../images/Logo.svg'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {solid,regular,brands} from '@fortawesome/fontawesome-svg-core'
 interface IProps{
     isDisplayed?: boolean
 }
@@ -15,13 +18,14 @@ function MenuBar({isDisplayed}:IProps) {
         <div className="menu-bar-container">
             <div className="menu-bar">
                 <div className="profile-info">
-                    <img src="https://ca.slack-edge.com/T02UUJ406K1-U030MDSN8CW-0ed4d6587952-512" alt="" />
-                    <p>Rolf Hegrand</p>
+                    <img src={Logo} alt="" />
+                    {/* <p>Rolf Hegrand</p> */}
 
                 </div>
 
                 <Link to='/saved'>
                     <div className="menu-item">
+                        <FontAwesomeIcon icon={solid('user-secret')}
                         <button>Saved Jobs</button>
                     </div>
                 </Link>
