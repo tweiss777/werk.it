@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import '../styles/menubar.css';
 import Logo from '../images/Logo.svg'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {solid,regular,brands} from '@fortawesome/fontawesome-svg-core'
+// import {solid,regular,brands} from '@fortawesome/fontawesome-svg-core' //this is giving issues
 interface IProps{
     isDisplayed?: boolean
 }
@@ -25,20 +25,32 @@ function MenuBar({isDisplayed}:IProps) {
 
                 <Link to='/saved'>
                     <div className="menu-item">
-                        <FontAwesomeIcon icon={solid('user-secret')}
-                        <button>Saved Jobs</button>
+                        {/* <FontAwesomeIcon icon={solid('user-secret')} */}
+                        <button>Dashboard</button>
                     </div>
                 </Link>
 
                 <Link to='/template'>
                     <div className="menu-item">
-                        <button>CV Template</button>
+                        <button>Jobs Applied</button>
                     </div>
                 </Link>
 
-                <Link to='/profile'>
+                <Link to='/calendar'>
                     <div className="menu-item">
-                        <button>Profile Settings</button>
+                        <button>Calendar</button>
+                    </div>
+                </Link>
+
+                <Link to='/files'>
+                    <div className="menu-item">
+                        <button>Files</button>
+                    </div>
+                </Link>
+
+                <Link to='/settings'>
+                    <div className="menu-item">
+                        <button>Settings</button>
                     </div>
                 </Link>
 
