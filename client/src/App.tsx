@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter, Routes } from 'react-router-dom'
 import './App.css'
-import MenuBar from './components/MenuBar'
+import NavigationBar from './components/NavigationBar'
 
 function App() {
     // routes should be created here
@@ -9,7 +9,7 @@ function App() {
     return (
         <>
             <BrowserRouter>
-                <MenuBar />
+                <NavigationBar />
                 <Routes>
 
 
