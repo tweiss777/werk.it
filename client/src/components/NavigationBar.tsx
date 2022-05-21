@@ -19,6 +19,7 @@ function NavigationBar(){
 
     return(
         <>
+        
         <button onClick={handleDisplayMenu}>
             Menu
         </button>
