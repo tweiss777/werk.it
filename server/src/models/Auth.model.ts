@@ -1,4 +1,4 @@
-// import Users from '../migrations/Auth.migration.ts'
+import Users from '../migrations/Auth.migration'
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import { error, exposeAttributes } from '../utils/utils'
