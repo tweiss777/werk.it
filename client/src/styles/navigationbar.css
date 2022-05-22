@@ -1,0 +1,11 @@
+.navigation-bar-container{
+    /* background: linear-gradient(180deg, #F2ECF9 0%, #F4F0E9 100%);; */
+
+    border: solid black 2px;
+
+}
+
+.logo{
+    margin-top: 10px;
+    margin-left: 10px;
+}
