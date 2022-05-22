@@ -1,25 +1,22 @@
-import React from 'react'
-import { BrowserRouter, Routes } from 'react-router-dom'
-import './App.css'
-import NavigationBar from './components/NavigationBar'
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import "./App.css";
+import NavigationBar from "./components/NavigationBar";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
-    // routes should be created here
+  // routes should be created here
 
-    return (
-        <>
-            <BrowserRouter>
-                <NavigationBar />
-                <Routes>
-
-
-                    
-                </Routes>
-            
-            </BrowserRouter>
-
-        </>
-    )
+  return (
+    <>
+      <BrowserRouter>
+        <NavigationBar />
+        <Routes>
+          <Route path="/" element={<Dashboard />} />
+        </Routes>
+      </BrowserRouter>
+    </>
+  );
 }
 
-export default App
+export default App;
