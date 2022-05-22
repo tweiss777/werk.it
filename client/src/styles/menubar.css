@@ -43,7 +43,6 @@
 
 .menu-bar .menu-item{
     padding-left: 10px;
-    /* border: solid black 2px; */
     margin: 20px 5%;
     transition: 0.3s ease-in;
 }
@@ -52,16 +51,3 @@
     color: #7b7b7b;
 }
 
-
-
-@keyframes slide-in{
-    100%{
-        left:0%;
-
-    }
-
-    0%{
-        display:none;
-        left:-100%;
-    }
-}
