@@ -1,7 +1,7 @@
-import Users from '../migrations/Auth.migration.ts'
+// import Users from '../migrations/Auth.migration.ts'
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
-import { error, exposeAttributes } from '../utils/utils.ts'
+import { error, exposeAttributes } from '../utils/utils'
 
 const accessTokenSecret = process.env.ACCESS_TOKEN_SECRET as string
 const refreshTokenSecret = process.env.REFRESH_TOKEN_SECRET as string
@@ -13,7 +13,7 @@ const publicAttributes = [
 
 export const readAllUsers = async (isPublic = false) => {
     const users = await Users.findAll(
-        ...(isPublic && { attributes: publicAttributes })
+        { ...isPublic && { attributes: publicAttributes } }
     )
     return users
 }
@@ -53,7 +53,7 @@ export const createUser = async (reqBody) => {
         password: hashPassword,
     })
 
-    return await readUser({ email }.true)
+    return await readUser({ email })
 }
 
 export const updateUser = async (userId, fields) => {
@@ -75,7 +75,7 @@ export const loginUser = async (reqBody) => {
 
     const refreshToken = jwt.sign(
         { userId },
-        refreshTokenSecret
+        refreshTokenSecret,
         {
             expiresIn: '1d',
         }

@@ -5,7 +5,7 @@ import {
     loginUser,
     logoutUser,
     refreshUserToken,
-} from '../models/Auth.model.js'
+} from '../models/Auth.model'
 
 
 const tokenCookie = process.env.TOKEN_COOKIE as string

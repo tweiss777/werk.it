@@ -77,7 +77,11 @@
         "strict": false /* Enable all strict type-checking options. */,
         // "noImplicitAny": true,                            /* Enable error reporting for expressions and declarations with an implied `any` type.. */
         "strictNullChecks": true, /* When type checking, take into account `null` and `undefined`. */
-        "lib": ["es5", "es6", "dom", "dom.iterable"],
+        "lib": [
+            "es2018",
+            "dom",
+            "DOM.Iterable"
+          ],
         // "strictFunctionTypes": true,                      /* When assigning functions, check to ensure parameters and the return values are subtype-compatible. */
         // "strictBindCallApply": true,                      /* Check that the arguments for `bind`, `call`, and `apply` methods match the original function. */
         // "strictPropertyInitialization": true,             /* Check for class properties that are declared but not set in the constructor. */
