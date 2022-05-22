@@ -1,11 +1,15 @@
 .navigation-bar-container{
-    /* background: linear-gradient(180deg, #F2ECF9 0%, #F4F0E9 100%);; */
-
-    border: solid black 2px;
+    @apply w-full flex flex-row justify-between;
+    /* border: solid black 2px; */
 
 }
 
 .logo{
-    margin-top: 10px;
+    @apply mt-4;
     margin-left: 10px;
+ } 
+
+
+.right-side{
+    @apply flex flex-row self-center mr-3 mt-4;
 }
