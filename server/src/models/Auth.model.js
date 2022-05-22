@@ -3,14 +3,7 @@ import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import { error, exposeAttributes } from '../utils/utils.js'
 
-const publicAttributes = [
-    'id',
-    'email',
-    'firstName',
-    'lastName',
-    'phoneNumber',
-    'is_admin',
-]
+const publicAttributes = ['id', 'email', 'firstName', 'lastName', 'is_admin']
 
 export const readAllUsers = async (isPublic = false) => {
     const users = await Users.findAll(
@@ -28,14 +21,7 @@ export const readUser = async (where, isPublic = false) => {
 }
 
 export const createUser = async (reqBody) => {
-    const {
-        firstName,
-        lastName,
-        phoneNumber,
-        email,
-        password,
-        passwordConfirm,
-    } = reqBody
+    const { email, password, passwordConfirm } = reqBody
 
     if (password !== passwordConfirm)
         return error(400, 'Password confirmation does not match')
@@ -49,12 +35,11 @@ export const createUser = async (reqBody) => {
     await Users.create({
         firstName,
         lastName,
-        phoneNumber,
         email,
         password: hashPassword,
     })
 
-    return await readUser({ email }.true)
+    return await readUser({ email }, true)
 }
 
 export const updateUser = async (userId, fields) => {

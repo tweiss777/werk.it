@@ -42,10 +42,6 @@ const Users = db.define(
             type: Sequelize.STRING,
             allowNull: true,
         },
-        phoneNumber: {
-            type: Sequelize.STRING,
-            allowNull: true,
-        },
         is_admin: {
             type: Sequelize.BOOLEAN,
             defaultValue: false,
