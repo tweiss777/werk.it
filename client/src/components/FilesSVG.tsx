@@ -1,7 +1,7 @@
 import React from "react";
 export default function FilesSVG() {
     return (
-        <svg className="fill-current h-full w-full"
+        <svg
         width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M30.6666 30.6667L24 24L17.3333 30.6667" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
             <path d="M24 24V39" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>

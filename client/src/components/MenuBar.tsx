@@ -3,63 +3,67 @@ import { Link } from "react-router-dom";
 import '../styles/menubar.css';
 import DashbaordSVG from "./DashboardSVG";
 import LogoSVG from "./LogoSVG";
-// import {solid,regular,brands} from '@fortawesome/fontawesome-svg-core' //this is giving issues
+
 interface IProps{
-    isDisplayed?: boolean
+    isDisplayed?: boolean;
 }
 
-function MenuBar({isDisplayed}:IProps) {
+function MenuBar({ isDisplayed }: IProps) {
+  if (!isDisplayed) return <></>;
+  else
+    return (
+      <div className="menu-bar-container">
+        <div className="menu-bar">
+          <div className="profile-info">
+            <LogoSVG />
 
-    if (!isDisplayed) return <></>
-    
-    else return (
-        
-        // flex box
-        <div className="menu-bar-container">
-            <div className="menu-bar">
-                <div className="profile-info">
-                    <LogoSVG />
+          </div>
 
-                </div>
-
-                <Link to='/saved'>
-                    <div className="flex flex-row menu-item">
-                        <DashbaordSVG/>
-                        <button>Dashboard</button>
-                    </div>
-                </Link>
-
-                <Link to='/template'>
-                    <div className="flex flex-row menu-item">
-                        <button>Jobs Applied</button>
-                    </div>
-                </Link>
-
-                <Link to='/calendar'>
-                    <div className="flex flex-row menu-item">
-                        <button>Calendar</button>
-                    </div>
-                </Link>
-
-                <Link to='/files'>
-                    <div className="flex flex-row menu-item">
-                        <button>Files</button>
-                    </div>
-                </Link>
-
-                <Link to='/settings'>
-                    <div className="flex flex-row menu-item">
-                        <button>Settings</button>
-                    </div>
-                </Link>
-
+          <Link to="/saved">
+            <div className="flex flex-row menu-item">
+              <DashbaordSVG />
+              <button>DASHBOARD</button>
             </div>
+          </Link>
+
+          <Link to="/template">
+            <div className="flex flex-row menu-item">
+
+              <button>APPLIED JOBS</button>
+            </div>
+          </Link>
+
+          <Link to="/wishlist">
+            <div className="flex flex-row menu-item">
+              <button>WISHLIST</button>
+            </div>
+          </Link>
+
+          <Link to="/calendar">
+            <div className="flex flex-row menu-item">
+              <button>CALENDAR</button>
+            </div>
+          </Link>
+          <Link to="/contacts">
+            <div className="flex flex-row menu-item">
+              <button>CONTACTS</button>
+            </div>
+          </Link>
+
+          <Link to="/files">
+            <div className="flex flex-row menu-item">
+              <button>FILES</button>
+            </div>
+          </Link>
+
+          <Link to="/settings">
+            <div className="flex flex-row menu-item">
+              <button>SETTINGS</button>
+            </div>
+          </Link>
         </div>
-    )
-
-
-
-
+      </div>
+    );
 }
 
 export default MenuBar;
