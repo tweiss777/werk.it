@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import '../styles/menubar.css';
-import Logo from '../images/Logo.svg'
 import DashbaordSVG from "./DashboardSVG";
+import LogoSVG from "./LogoSVG";
 // import {solid,regular,brands} from '@fortawesome/fontawesome-svg-core' //this is giving issues
 interface IProps{
     isDisplayed?: boolean
@@ -18,8 +18,7 @@ function MenuBar({isDisplayed}:IProps) {
         <div className="menu-bar-container">
             <div className="menu-bar">
                 <div className="profile-info">
-                    <img src={Logo} alt="" />
-                    {/* <p>Rolf Hegrand</p> */}
+                    <LogoSVG />
 
                 </div>
 
