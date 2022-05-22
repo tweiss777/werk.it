@@ -8,13 +8,12 @@ function NavigationBar() {
 
   return (
     
-    <div className="h-full font-inter">
+    <div className="font-inter">
       <div className="w-full flex flex-row navigation-bar-container">
         <div className="logo">
           <LogoSVG />
         </div>
       </div>
-      <MenuBar />
     </div>
     
       

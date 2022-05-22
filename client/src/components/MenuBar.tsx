@@ -20,10 +20,7 @@ function MenuBar({ isDisplayed }: IProps) {
     return (
       <div className=" menu-bar-container">
         <div className="menu-bar">
-          {/* <div className="logo">
-            <LogoSVG />
 
-          </div> */}
 
           <Link to="/saved">
             <div className="menu-item">
