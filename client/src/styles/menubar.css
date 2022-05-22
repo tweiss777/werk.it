@@ -1,32 +1,24 @@
-
-
-
 .menu-bar-container{
-    background: linear-gradient(180deg, #F2ECF9 0%, #F4F0E9 100%);;
+    /* background: linear-gradient(180deg, #F2ECF9 0%, #F4F0E9 100%);; */
     /* position: fixed; */
     min-width: 300px;
     max-width: 350px;
     height: 100%;
-    box-shadow: 4px 0px 12px -5px ;
+    border-right: solid;
     animation: slide-in 0.1s
 }
 
 
 
-
-
-
 .menu-bar-container > .menu-bar{
     padding-top: 25px;
-
     @apply flex-col;
 
 }
-
 .menu-bar .menu-item{
     @apply flex flex-row space-x-10 font-semibold leading-5 w-full;
     
-    padding-left: 10px;
+    padding-left: 20px;
     margin: 20px auto;
     transition: 0.3s ease-in;
     border-left: solid rgba(255, 255, 255, 0) 5px;
