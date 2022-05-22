@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import '../styles/menubar.css';
 import Logo from '../images/Logo.svg'
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 // import {solid,regular,brands} from '@fortawesome/fontawesome-svg-core' //this is giving issues
 interface IProps{
     isDisplayed?: boolean
