@@ -22,14 +22,14 @@ function MenuBar({ isDisplayed }: IProps) {
         <div className="menu-bar">
 
 
-          <Link to="/saved">
+          <Link to="/dashboard">
             <div className="menu-item">
               <DashbaordSVG />
               <button>DASHBOARD</button>
             </div>
           </Link>
 
-          <Link to="/template">
+          <Link to="/applied">
             <div className="menu-item">
               <AppliedJobsSVG />
               <button>APPLIED JOBS</button>
