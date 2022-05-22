@@ -3,52 +3,41 @@
 
 .menu-bar-container{
     background: linear-gradient(180deg, #F2ECF9 0%, #F4F0E9 100%);;
-    position: fixed;
-    min-width: 400px;
-    max-width: 600px;
+    /* position: fixed; */
+    min-width: 300px;
+    max-width: 350px;
     height: 100%;
     box-shadow: 4px 0px 12px -5px ;
-    animation: slide-in 0.5s
+    animation: slide-in 0.1s
 }
+
+
+
 
 
 
 .menu-bar-container > .menu-bar{
+    padding-top: 25px;
+
     @apply flex-col;
 
 }
 
-.profile-info{
-    align-items: center;
-    display: flex;
-    flex-direction: row;
-    flex-basis: 15%;
-
-    @apply mt-3 mb-3 ml-5 mr-5;
-}
-
-
-.profile-info > img {
-    flex-basis: 10%;
-    @apply rounded-full;
-    max-width: 318px;
-    max-height: 46px;
-}
-.profile-info > p {
-    text-align: center;
-    flex-basis: 90%;
-    font-size: 1.5rem;
-    margin-left: 3%;
-}
-
 .menu-bar .menu-item{
-    @apply flex flex-row;
+    @apply flex flex-row space-x-10 font-semibold leading-5 w-full;
+    
     padding-left: 10px;
-    margin: 20px 5%;
+    margin: 20px auto;
     transition: 0.3s ease-in;
+    border-left: solid rgba(255, 255, 255, 0) 5px;
+    
 }
 .menu-item:hover{
-    transform: scale(1.01);
-    color: #7b7b7b;
+    @apply bg-white;
+    border-left: #B10494 solid 5px;
+    color: #B10494;
+    
 }
-
+.logo{
+    margin-left: 40px;
+}

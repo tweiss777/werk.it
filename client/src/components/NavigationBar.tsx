@@ -14,8 +14,7 @@ function NavigationBar() {
   }
 
   return (
-    <div className="font-inter">
-      <button onClick={handleDisplayMenu}>Menu</button>
+    <div className="h-full font-inter">
       <MenuBar />
     </div>
       
