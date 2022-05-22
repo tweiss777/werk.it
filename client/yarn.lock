@@ -1161,6 +1161,7 @@
     strip-json-comments "^3.1.1"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 "@fortawesome/fontawesome-common-types@6.1.1":
   version "6.1.1"
   resolved "https://registry.npmjs.org/@fortawesome/fontawesome-common-types/-/fontawesome-common-types-6.1.1.tgz"
@@ -1194,6 +1195,8 @@
   dependencies:
     prop-types "^15.8.1"
 
+=======
+>>>>>>> cd9085ea5304ad8451cdeddf665b3c0664e141d1
 =======
 >>>>>>> cd9085ea5304ad8451cdeddf665b3c0664e141d1
 "@humanwhocodes/config-array@^0.9.2":
@@ -1954,6 +1957,7 @@
     "@types/react" "*"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 "@types/react@*":
   version "18.0.9"
   resolved "https://registry.npmjs.org/@types/react/-/react-18.0.9.tgz"
@@ -1976,6 +1980,18 @@
 >>>>>>> cd9085ea5304ad8451cdeddf665b3c0664e141d1
   version "18.0.9"
   resolved "https://registry.npmjs.org/@types/react/-/react-18.0.9.tgz"
+=======
+"@types/react-fontawesome@^1.6.5":
+  version "1.6.5"
+  resolved "https://registry.npmjs.org/@types/react-fontawesome/-/react-fontawesome-1.6.5.tgz"
+  integrity sha512-O75ViR81klU7TfVt4TAdEOWzzEf58RM8PVQHUmKsHjhDt/WLMcb+h/k5XxHUv9iYAKI5u81IoMJ20wC+QLe3Dw==
+  dependencies:
+    "@types/react" "*"
+
+"@types/react@*", "@types/react@^18.0.9":
+  version "18.0.9"
+  resolved "https://registry.npmjs.org/@types/react/-/react-18.0.9.tgz"
+>>>>>>> cd9085ea5304ad8451cdeddf665b3c0664e141d1
   integrity sha512-9bjbg1hJHUm4De19L1cHiW0Jvx3geel6Qczhjd0qY5VKVE2X5+x77YxAepuCwVh4vrgZJdgEJw48zrhRIeF4Nw==
   dependencies:
     "@types/prop-types" "*"
