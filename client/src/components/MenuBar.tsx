@@ -1,88 +1,75 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../styles/menubar.css";
-import "../styles/menubar.css";
-// import Logo from '../images/Logo.svg'
+import '../styles/menubar.css';
+import AppliedJobsSVG from "./AppliedJobsSVG";
+import CalendarSVG from "./CalendarSVG";
+import ContactsSVG from "./ContactsSVG";
 import DashbaordSVG from "./DashboardSVG";
-// import {solid,regular,brands} from '@fortawesome/fontawesome-svg-core' //this is giving issues
+import FilesSVG from "./FilesSVG";
+import LogoSVG from "./LogoSVG";
+import SettingsSVG from "./SettingsSVG";
+import WishListSVG from "./WishListSVG";
 
-interface IProps {
-  isDisplayed?: boolean;
+interface IProps{
+    isDisplayed?: boolean;
 }
 
 function MenuBar({ isDisplayed }: IProps) {
-  if (!isDisplayed) return <></>;
-  else
+  // if (!isDisplayed) return <></>;
+  // else
     return (
-      // flex box
       <div className="menu-bar-container">
         <div className="menu-bar">
-          <div className="profile-info">
-            <img
-              src="https://ca.slack-edge.com/T02UUJ406K1-U030MDSN8CW-0ed4d6587952-512"
-              alt=""
-            />
-            <p>Rolf Hegrand</p>
+          <div className="logo">
+            <LogoSVG />
+
           </div>
 
           <Link to="/saved">
-            <div className="flex flex-row menu-item">
+            <div className="menu-item">
               <DashbaordSVG />
-              <button>Dashboard</button>
+              <button>DASHBOARD</button>
             </div>
           </Link>
 
           <Link to="/template">
+            <div className="menu-item">
+              <AppliedJobsSVG />
+              <button>APPLIED JOBS</button>
+            </div>
+          </Link>
+
+          <Link to="/wishlist">
             <div className="flex flex-row menu-item">
-              <button>Jobs Applied</button>
+              <WishListSVG />
+              <button>WISHLIST</button>
             </div>
           </Link>
 
           <Link to="/calendar">
-            <div className="flex flex-row menu-item">
-              <button>Calendar</button>
+            <div className="menu-item">
+              <CalendarSVG />
+              <button>CALENDAR</button>
+            </div>
+          </Link>
+          <Link to="/contacts">
+            <div className="menu-item">
+              <ContactsSVG />
+              <button>CONTACTS</button>
             </div>
           </Link>
 
           <Link to="/files">
-            <div className="flex flex-row menu-item">
-              <button>Files</button>
+            <div className="menu-item">
+              <FilesSVG />
+              <button>FILES</button>
             </div>
           </Link>
 
           <Link to="/settings">
-            <div className="flex flex-row menu-item">
-              <button>Settings</button>
-            </div>
-          </Link>
-
-          <Link to="/files">
-            <div className="flex flex-row menu-item">
-              <button>Files</button>
-            </div>
-          </Link>
-
-          <Link to="/settings">
-            <div className="flex flex-row menu-item">
-              <button>Settings</button>
-            </div>
-          </Link>
-
-          <Link to="/saved">
             <div className="menu-item">
-              <button>Saved Jobs</button>
-            </div>
-          </Link>
-
-          <Link to="/template">
-            <div className="menu-item">
-              <button>CV Template</button>
-            </div>
-          </Link>
-
-          <Link to="/profile">
-            <div className="menu-item">
-              <button>Profile Settings</button>
+              <SettingsSVG />
+              <button>SETTINGS</button>
             </div>
           </Link>
         </div>
