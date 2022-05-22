@@ -4,6 +4,8 @@ module.exports = {
     extend: {
       colors: {
         addButton: "#B10494",
+        text: "#853177",
+        bgRow: "#F9F9F9",
       },
     },
   },

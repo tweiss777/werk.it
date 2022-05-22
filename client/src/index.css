@@ -2,19 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
-
 html,
 body,
 #root {
-    margin: 0 !important;
-    padding: 0 !important;
-    height: 100vh;
-    width: 100vw;
-    max-width: 100vw;
-    background-color: #f5f6f8;
-    overflow: hidden;
-    box-sizing: border-box;
+  margin: 0 !important;
+  padding: 0 !important;
+  height: 100vh;
+  width: 100vw;
+  max-width: 100vw;
+  background-color: #f5f6f8;
+  overflow: hidden;
+  box-sizing: border-box;
+  /* font-family: "Poppins", sans-serif; */
 }
 #root {
-    overflow: auto;
+  overflow: auto;
 }
