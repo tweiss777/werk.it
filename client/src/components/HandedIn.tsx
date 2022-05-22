@@ -2,7 +2,7 @@ import React from "react";
 
 export default function HandedIn() {
   return (
-    <div className="flex">
+    <div className="flex justify-start">
       <svg
         width="20"
         height="24"
