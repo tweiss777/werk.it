@@ -1,5 +1,5 @@
 import { Sequelize } from 'sequelize'
-import db from '../data/Database'
+import db from '../data/Database.js'
 
 // Bcrypt hash
 const hashValidator = /^\$2[ayb]\$.{56}$/

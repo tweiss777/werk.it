@@ -1,19 +1,20 @@
-import Users from '../migrations/Auth.migration'
+import Users from '../migrations/Auth.migration.js'
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
-import { error, exposeAttributes } from '../utils/utils'
-
-const accessTokenSecret = process.env.ACCESS_TOKEN_SECRET as string
-const refreshTokenSecret = process.env.REFRESH_TOKEN_SECRET as string
+import { error, exposeAttributes } from '../utils/utils.js'
 
 const publicAttributes = [
     'id',
-    'email'
+    'email',
+    'firstName',
+    'lastName',
+    'phoneNumber',
+    'is_admin',
 ]
 
 export const readAllUsers = async (isPublic = false) => {
     const users = await Users.findAll(
-        { ...isPublic && { attributes: publicAttributes } }
+        ...(isPublic && { attributes: publicAttributes })
     )
     return users
 }
@@ -53,7 +54,7 @@ export const createUser = async (reqBody) => {
         password: hashPassword,
     })
 
-    return await readUser({ email })
+    return await readUser({ email }.true)
 }
 
 export const updateUser = async (userId, fields) => {
@@ -69,13 +70,13 @@ export const loginUser = async (reqBody) => {
     const passwordOK = await bcrypt.compare(reqBody.password, password)
     if (!passwordOK) return error(400, 'Wrong Password')
 
-    const accessToken = jwt.sign({ userId }, accessTokenSecret, {
+    const accessToken = jwt.sign({ userId }, process.env.ACCESS_TOKEN_SECRET, {
         expiresIn: '15s',
     })
 
     const refreshToken = jwt.sign(
         { userId },
-        refreshTokenSecret,
+        process.env.REFRESH_TOKEN_SECRET,
         {
             expiresIn: '1d',
         }
@@ -99,13 +100,13 @@ export const logoutUser = async (refreshToken) => {
 export const refreshUserToken = async (refreshToken, user) => {
     return jwt.verify(
         refreshToken,
-        refreshTokenSecret,
+        process.env.REFRESH_TOKEN_SECRET,
         (err, decoded) => {
             if (err) return error(403, 'Access token is not valid')
             const keys = exposeAttributes(user.dataValues, publicAttributes)
             const accessToken = jwt.sign(
                 { user: keys },
-                accessTokenSecret,
+                process.env.ACCESS_TOKEN_SECRET,
                 {
                     expiresIn: '15s',
                 }

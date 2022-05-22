@@ -5,11 +5,9 @@ import {
     loginUser,
     logoutUser,
     refreshUserToken,
-} from '../models/Auth.model'
+} from '../models/Auth.model.js'
 
-
-const tokenCookie = process.env.TOKEN_COOKIE as string
-
+const { TOKEN_COOKIE: tokenCookie } = process.env
 
 export const refreshToken = async (req, res, next) => {
     try {
@@ -40,7 +38,7 @@ export const getUsers = async (req, res, next) => {
 }
 
 export const getUser = async (req, res, next) => {
-    const id = req.params?.id || req.user?.id
+    const id  = req.params?.id || req.user?.id
     try {
         const user = await readUser({ id }, true)
         if (user) {
