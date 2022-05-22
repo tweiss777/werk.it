@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+
 
 .menu-bar-container{
-    font-family: Inter;
     background: linear-gradient(180deg, #F2ECF9 0%, #F4F0E9 100%);;
     position: fixed;
     min-width: 400px;
@@ -42,6 +42,7 @@
 }
 
 .menu-bar .menu-item{
+    @apply flex flex-row;
     padding-left: 10px;
     margin: 20px 5%;
     transition: 0.3s ease-in;

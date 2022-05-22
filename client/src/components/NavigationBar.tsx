@@ -14,10 +14,11 @@ function NavigationBar() {
   }
 
   return (
-    <>
+    <div className="font-inter">
       <button onClick={handleDisplayMenu}>Menu</button>
-      <MenuBar isDisplayed={display} />
-    </>
+      <MenuBar />
+    </div>
+      
   );
 }
 

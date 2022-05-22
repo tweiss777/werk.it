@@ -1,8 +1,9 @@
-import React from 'React';
+
+import React from "react";
 
 export default function CalendarSVG() {
     return (
-        <svg className="fill-current h-full w-full" width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M42.5 13H5.5V40.5H42.5V13Z" stroke="black" stroke-width="3" stroke-miterlimit="10"/>
             <path d="M13 6V18" stroke="black" stroke-width="3" stroke-miterlimit="10"/>
             <path d="M35 6V18" stroke="black" stroke-width="3" stroke-miterlimit="10"/>
