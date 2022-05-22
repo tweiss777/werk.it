@@ -1,10 +1,12 @@
 import React from "react";
 import Filterrow from "./Filterrow";
+import Jobinfo from "./Jobinfo";
 
 export default function Table() {
   return (
-    <div className="">
+    <div className="bg-">
       <Filterrow />
+      <Jobinfo />
       <div>1</div>
       <div>2</div>
       <div>3</div>
