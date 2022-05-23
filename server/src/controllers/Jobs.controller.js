@@ -8,14 +8,15 @@ import {
 
 // Get Jobs
 export const getAllJobs = async (req, res, next) => {
-    const { user, query } = req
-    const where = { ...query, addedBy: user.id }
-    try {
-        const Jobs = await readAllJobs(where)
-        res.json(Jobs)
-    } catch (err) {
-        next(err)
-    }
+    // const { user, query } = req
+    // const where = { ...query, addedBy: user.id }
+    // try {
+    //     const Jobs = await readAllJobs(where)
+    //     res.json(Jobs)
+    // } catch (err) {
+    //     next(err)
+    // }
+    res.json({"Test": "test"})
 }
 
 export const getJob = async (req, res, next) => {

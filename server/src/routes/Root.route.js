@@ -28,6 +28,6 @@ router.get("/token", refreshToken);
 router.use("/jobs", jobsRouter);
 
 // Events API
-router.use("/jobs", eventsRouter);
+router.use("/events", eventsRouter);
 
 export default router;
