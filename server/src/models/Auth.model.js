@@ -21,7 +21,7 @@ export const readUser = async (where, isPublic = false) => {
 }
 
 export const createUser = async (reqBody) => {
-    const { email, password, passwordConfirm } = reqBody
+    const { email, password, passwordConfirm, firstName, lastName } = reqBody
 
     if (password !== passwordConfirm)
         return error(400, 'Password confirmation does not match')

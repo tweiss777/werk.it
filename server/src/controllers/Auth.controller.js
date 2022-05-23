@@ -38,7 +38,7 @@ export const getUsers = async (req, res, next) => {
 }
 
 export const getUser = async (req, res, next) => {
-    const id  = req.params?.id || req.user?.id
+    const id = req.params?.id || req.user?.id
     try {
         const user = await readUser({ id }, true)
         if (user) {
@@ -54,9 +54,8 @@ export const getUser = async (req, res, next) => {
 export const Register = async (req, res, next) => {
     try {
         const userCreated = await createUser(req.body)
-        if (userCreated) {
-            const { error } = userCreated
-            next(error)
+        if (userCreated?.error) {
+            next(userCreated.error)
         }
         res.json(userCreated)
     } catch (err) {
