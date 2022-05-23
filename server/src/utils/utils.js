@@ -10,7 +10,7 @@ export const error = (status, message) => ({ error: { status, message } })
 export const translateFields = (fields) => {
     const {
         id,
-        added_by,
+        addedBy,
         position,
         companyName,
         companyUrl,

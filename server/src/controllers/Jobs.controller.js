@@ -8,15 +8,15 @@ import {
 
 // Get Jobs
 export const getAllJobs = async (req, res, next) => {
-    // const { user, query } = req
-    // const where = { ...query, addedBy: user.id }
-    // try {
-    //     const Jobs = await readAllJobs(where)
-    //     res.json(Jobs)
-    // } catch (err) {
-    //     next(err)
-    // }
-    res.json({"Test": "test"})
+    const { user, query } = req
+    console.log(user.id)
+    const where = { ...query, addedBy: user.id }
+    try {
+        const Jobs = await readAllJobs(where)
+        res.json(Jobs)
+    } catch (err) {
+        next(err)
+    }
 }
 
 export const getJob = async (req, res, next) => {
@@ -34,7 +34,7 @@ export const getJob = async (req, res, next) => {
 export const addJob = async (req, res, next) => {
     const { user, body } = req
     try {
-        const jobAdded = await createJob({...body, addedBy: user.id})
+        const jobAdded = await createJob({ ...body, addedBy: user.id })
         res.json(jobAdded)
     } catch (err) {
         next(err)
@@ -73,7 +73,7 @@ const wishlistPhase = 'WISHLIST'
 
 export const getWishlistJobs = async (req, res, next) => {
     const { user, query } = req
-    const where = {...query, phase: wishlistPhase, addedBy: user.id}
+    const where = { ...query, phase: wishlistPhase, addedBy: user.id }
     try {
         const savedJobs = await readAllJobs(where)
         res.json(savedJobs)
@@ -85,7 +85,7 @@ export const getWishlistJobs = async (req, res, next) => {
 export const getWishlistJob = async (req, res, next) => {
     const { id } = req.params
     const { user } = req
-    const where = {id, phase: wishlistPhase, addedBy: user.id}
+    const where = { id, phase: wishlistPhase, addedBy: user.id }
     try {
         const Job = await readJob(where)
         res.json(Job)
@@ -97,7 +97,7 @@ export const getWishlistJob = async (req, res, next) => {
 export const addWishlistJob = async (req, res, next) => {
     const { id } = req.params
     const { user, body } = req
-    const where = {...body, phase: wishlistPhase, addedBy: user.id}
+    const where = { ...body, phase: wishlistPhase, addedBy: user.id }
     try {
         const jobAdded = await createJob(where)
         res.json(jobAdded)

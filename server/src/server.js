@@ -24,6 +24,7 @@ app.use(cors(corsOptions))
 
 app.use(cookieParser())
 app.use(express.json())
+
 app.use(router)
 
 app.use((err, req, res, next) => {
@@ -32,8 +33,9 @@ app.use((err, req, res, next) => {
         const message =
             err.message ||
             err.response?.data?.message ||
+            JSON.stringify(err) ||
             'An unknown error occurred'
-        res.status(status).send({message})
+        res.status(status).send({ message })
     }
 })
 
