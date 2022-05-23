@@ -1,6 +1,6 @@
 import { Sequelize } from "sequelize";
 import db from "../data/Database.js";
-import Jobs from "./Jobs.migration.js";
+import { Jobs } from "./Jobs.migration.js";
 
 export const Events = db.define({
   id: {
@@ -18,10 +18,10 @@ export const Events = db.define({
   job_id: {
     type: Sequelize.UUID,
     allowNull: false,
-    references: {
-      model: Jobs,
-      key: "id",
-    },
+    // references: {
+    //   model: Jobs,
+    //   key: "id",
+    // },
     validate: {
       isUUID: {
         args: 4,
@@ -32,10 +32,10 @@ export const Events = db.define({
   added_by: {
     type: Sequelize.UUID,
     allowNull: false,
-    references: {
-      model: Jobs,
-      key: "id",
-    },
+    // references: {
+    //   model: Jobs,
+    //   key: "id",
+    // },
     validate: {
       isUUID: {
         args: 4,
@@ -58,3 +58,7 @@ export const Events = db.define({
     },
   },
 });
+
+(async () => {
+  await db.sync();
+})();

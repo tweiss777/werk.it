@@ -6,6 +6,13 @@ import {
   refreshToken,
 } from "../controllers/Auth.controller.js";
 import jobsRouter from "./Jobs.route.js";
+import {
+  createEvent,
+  updateEvent,
+  deleteEvent,
+  readEvent,
+  readAllEvents,
+} from "../models/Events.model.js";
 import { verifyToken } from "../middleware/VerifyToken.js";
 
 const router = express.Router();
