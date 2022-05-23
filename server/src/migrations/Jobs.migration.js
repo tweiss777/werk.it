@@ -13,7 +13,7 @@ const statusValidator = [
   "Got an Offer!",
 ];
 
-export const Jobs = db.define("Jobs", {
+export const Jobs = db.define("jobs", {
   id: {
     type: Sequelize.UUID,
     defaultValue: Sequelize.UUIDV4,
