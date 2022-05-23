@@ -9,28 +9,6 @@ const publicAttributesJobs = [
   "is_admin",
 ];
 
-export const readAllJobs = async (isPublic = false) => {
-  const jobs = await Jobs.findAll(
-    ...(isPublic && { attributes: publicAttributes })
-  );
-  return jobs;
-};
-
-export const readJob = async (where, isPublic = false) => {
-  const jobs = await Jobs.findOne({
-    where,
-    ...(isPublic && { attributes: publicAttributes }),
-  });
-  return jobs;
-};
-
-export const readCompany = async (where, isPublic = false) => {
-  const company = Company.findOne({
-    where,
-    ...(isPublic && { attributes: publicAttributes }),
-  });
-};
-
 export const createJob = async (reqBody) => {
   const { name, position, companyName, jobDescription, status } = req.body;
 
@@ -46,14 +24,60 @@ export const createJob = async (reqBody) => {
   //setStatus
 };
 
-/* 
-1. Add job route - POST (verifyToken)  
-2. Delete job route - DELETE (verifyToken)
-3. Update job - PUT (verifyToken)
-4. Get job by id- GET 
-5. Get all jobs - GET (verifyToken)
-6. Get jobs by user (verifyToken,verifyAdmin)
-7. Save Job - POST verifyToken)
-8. Get all saved - GET jobs (verifyToken)
-9. unSave job - DELETE (verifyToken)
-*/
+export const updateJob = async (reqBody) => {
+  const { name, position, companyName, jobDescription, status } = req.body;
+};
+
+export const deleteJob = async (reqBody) => {
+  const { name, position, companyName, jobDescription, status } = req.body;
+};
+
+export const getJobById = async (where, isPublic = false) => {
+  const jobs = await Jobs.findOne({
+    where,
+    ...(isPublic && { attributes: publicAttributes }),
+  });
+  return jobs;
+};
+
+export const getAllJobs = async (isPublic = false) => {
+  const jobs = await Jobs.findAll(
+    ...(isPublic && { attributes: publicAttributes })
+  );
+  return jobs;
+};
+
+export const getJobsByUser = async (isPublic = false) => {
+  const jobs = await Jobs.findAll(
+    ...(isPublic && { attributes: publicAttributes })
+  );
+  return jobs;
+};
+
+export const saveJob = async (isPublic = false) => {
+  const jobs = await Jobs.findAll(
+    ...(isPublic && { attributes: publicAttributes })
+  );
+  return jobs;
+};
+
+export const getAllSavedJobsByUser = async (isPublic = false) => {
+  const jobs = await Jobs.findAll(
+    ...(isPublic && { attributes: publicAttributes })
+  );
+  return jobs;
+};
+
+export const unSaveJob = async (isPublic = false) => {
+  const jobs = await Jobs.findAll(
+    ...(isPublic && { attributes: publicAttributes })
+  );
+  return jobs;
+};
+
+export const getCompanyById = async (where, isPublic = false) => {
+  const company = Company.findOne({
+    where,
+    ...(isPublic && { attributes: publicAttributes }),
+  });
+};
