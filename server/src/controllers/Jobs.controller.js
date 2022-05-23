@@ -20,8 +20,9 @@ export const getAllJobs = async (req, res, next) => {
 }
 
 export const getJob = async (req, res, next) => {
+    const { user } = req
     const { id } = req.params
-    const where = { addedBy: id }
+    const where = { id, addedBy: user.id}
     try {
         const Job = await readJob(where)
         res.json(Job)

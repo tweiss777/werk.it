@@ -21,6 +21,7 @@ export const deleteJob = async (fields) => {
 
 export const readJob = async (fields) => {
     const where = translateFields(fields)
+    console.log(where)
     const job = await Jobs.findOne({
         where,
     })

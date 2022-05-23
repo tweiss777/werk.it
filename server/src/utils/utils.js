@@ -6,6 +6,9 @@ export const customJoin = (arr, s1, s2) =>
 
 export const error = (status, message) => ({ error: { status, message } })
 
+export const cleanObject = o => {
+    for (const prop in o) if (!o) delete o[prop];
+}
 
 export const translateFields = (fields) => {
     const {
@@ -43,7 +46,8 @@ export const translateFields = (fields) => {
         notes,
         ...rest
     }
-    return dbFields
+
+    return cleanObject(dbFields)
 }
 
 export const exposeAttributes = (obj, attributes) =>
