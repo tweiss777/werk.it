@@ -20,7 +20,7 @@ export default function Jobinfo() {
       <div className="w-1/6 pl-3">
         <HandedIn />
       </div>
-      <div>
+      <div className="w-1/6 pl-3">
         <Upcoming />
       </div>
       <div className="text-text w-1/6 pl-3">May 21, 2022</div>
