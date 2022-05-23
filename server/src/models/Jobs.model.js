@@ -45,3 +45,15 @@ export const createJob = async (reqBody) => {
   //source_id ?
   //setStatus
 };
+
+/* 
+1. Add job route - POST (verifyToken)  
+2. Delete job route - DELETE (verifyToken)
+3. Update job - PUT (verifyToken)
+4. Get job by id- GET 
+5. Get all jobs - GET (verifyToken)
+6. Get jobs by user (verifyToken,verifyAdmin)
+7. Save Job - POST verifyToken)
+8. Get all saved - GET jobs (verifyToken)
+9. unSave job - DELETE (verifyToken)
+*/
