@@ -7,7 +7,7 @@ import {
 } from "../models/Events.model.js";
 
 // Get Events
-export const getAllUsersEvents = async (req, res, next) => {
+export const getAllEvents = async (req, res, next) => {
   const { user, query } = req;
   const where = { ...query, added_by: user.id };
   try {
@@ -21,6 +21,17 @@ export const getAllUsersEvents = async (req, res, next) => {
 export const getAllJobEvents = async (req, res, next) => {
   const { id } = req.params;
   const where = { job_id: id };
+  try {
+    const Event = await readEvent(where);
+    res.json(Event);
+  } catch (err) {
+    next(err);
+  }
+};
+
+export const getEventById = async (req, res, next) => {
+  const { id } = req.params;
+  const where = { id: id };
   try {
     const Event = await readEvent(where);
     res.json(Event);

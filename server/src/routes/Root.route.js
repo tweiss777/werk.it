@@ -6,6 +6,7 @@ import {
   refreshToken,
 } from "../controllers/Auth.controller.js";
 import jobsRouter from "./Jobs.route.js";
+import eventsRouter from "./Events.route.js"
 import {
   createEvent,
   updateEvent,
@@ -25,5 +26,8 @@ router.get("/token", refreshToken);
 
 // Jobs API
 router.use("/jobs", jobsRouter);
+
+// Events API
+router.use("/jobs", eventsRouter);
 
 export default router;
