@@ -1,11 +1,12 @@
 import {
-    createJob,
-    readJob,
     readAllJobs,
-    readSavedJobs,
+    readJob,
+    createJob,
     updateJob,
-    addSavedJob,
-    deleteSavedJob,
+    deleteJob,
+    readWishlistJobs,
+    createWishlistJob,
+    deleteWishlistJob,
 } from '../models/Jobs.model.js'
 
 // Get Jobs
@@ -64,10 +65,10 @@ export const removeJob = async (req, res, next) => {
 }
 
 // Saved Jobs
-export const getSavedJobs = async (req, res, next) => {
+export const getWishlistJobs = async (req, res, next) => {
     const { user, query } = req
     try {
-        const savedJobs = await readSavedJobs(user.id, query)
+        const savedJobs = await readWishlistJobs(user.id, query)
 
         res.json(savedJobs)
     } catch (err) {
@@ -75,25 +76,25 @@ export const getSavedJobs = async (req, res, next) => {
     }
 }
 
-export const saveJob = async (req, res, next) => {
+export const addWishlistJob = async (req, res, next) => {
     const { id } = req.params
     const { user } = req
     try {
-        const Jobsaved = await addSavedJob({ userId: user.id, JobId: id })
-        const savedJobs = await readSavedJobs(user.id)
+        const newJob = await createWishlistJob({ userId: user.id, JobId: id })
+        const savedJobs = await readWishlistJobs(user.id)
         res.json(savedJobs)
     } catch (err) {
         next(err)
     }
 }
 
-export const unSaveJob = async (req, res, next) => {
+export const removeWishlistJob = async (req, res, next) => {
     const { id } = req.params
     const { user } = req
 
     try {
-        await deleteSavedJob({ userId: user.id, JobId: id })
-        const savedJobs = await readSavedJobs(user.id)
+        await deleteWishlistJob({ userId: user.id, JobId: id })
+        const savedJobs = await readWishlistJobs(user.id)
         res.json(savedJobs)
     } catch (err) {
         next(err)

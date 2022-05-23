@@ -1,5 +1,5 @@
 import Ajv from 'ajv'
-import movieSchema from '../data/movieSchema.js'
+import movieSchema from '../data/Jobs.schema.js'
 
 const ajv = new Ajv()
 const validate = ajv.compile(movieSchema)
