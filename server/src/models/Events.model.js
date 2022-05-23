@@ -1,11 +1,14 @@
 import { Events } from "../migrations/Events.migration.js";
 
 export const createEvent = async (reqBody) => {
-  return await Events.create({ reqBody });
+  return await Events.create(reqBody);
 };
 
 export const updateEvent = async (payload, where) => {
-  return await Events.update({ payload }, { where });
+  const eventToUpdate = await Events.findOne(where);
+  await eventToUpdate.update(payload);
+  await eventToUpdate.save();
+  return eventToUpdate;
 };
 
 export const deleteEvent = async (where) => {
@@ -15,7 +18,7 @@ export const deleteEvent = async (where) => {
 };
 
 export const readEvent = async (where) => {
-  const Event = await Events.findOne({
+  const Event = await Events.findAll({
     where,
   });
   return Event;

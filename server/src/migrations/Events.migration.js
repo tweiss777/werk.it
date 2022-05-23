@@ -47,9 +47,6 @@ export const Events = db.define("events", {
   event_desc: {
     type: Sequelize.STRING,
     allowNull: false,
-    validate: {
-      isAlphanumeric: { msg: "nextEventDesc can only be alphanumeric values" },
-    },
   },
   event_date: {
     type: Sequelize.DATE,
