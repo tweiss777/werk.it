@@ -1,0 +1,3 @@
+.job-info-container{
+    @apply max-h-80 overflow-y-scroll;
+}
