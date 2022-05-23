@@ -4,10 +4,10 @@ import {
     editJob,
     getJob,
     getAllJobs,
-    getSavedJobs,
     removeJob,
-    saveJob,
-    unSaveJob,
+    getWishlistJobs,
+    addWishlistJob,
+    getWishlistJob,
 } from '../controllers/Jobs.controller.js'
 import { verifyToken } from '../middleware/VerifyToken.js'
 
@@ -32,13 +32,12 @@ router
 // Get All Wishlist Jobs
 router
     .route('/wishlist')
-    .get(verifyToken, getSavedJobs)
+    .get(verifyToken, getWishlistJobs)
     // Save Wishlist Job
-    .post(verifyToken, saveJob)
+    .post(verifyToken, addWishlistJob)
+// Get Wishlist job by id
+router.route('/wishlist/:id').get(verifyToken, getWishlistJob)
 
-router
-    .route('/wishlist/:id')
-    // remove wishlist Job
-    .delete(verifyToken, removeJob)
+// 
 
 export default router
