@@ -1,6 +1,7 @@
 import { Sequelize } from "sequelize";
 import db from "../data/Database.js";
 import { Jobs } from "./Jobs.migration.js";
+import Users from "./Auth.migration.js";
 
 export const Events = db.define("events", {
   id: {
@@ -33,7 +34,7 @@ export const Events = db.define("events", {
     type: Sequelize.UUID,
     allowNull: false,
     references: {
-      model: Jobs,
+      model: Users,
       key: "id",
     },
     validate: {
