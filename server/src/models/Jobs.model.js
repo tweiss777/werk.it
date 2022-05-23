@@ -3,6 +3,7 @@ import { error, exposeAttributes } from '../utils/utils.js'
 
 export const createJob = async (reqBody) => {
     const {
+        added_by,
         position,
         companyName,
         companyLogo,
@@ -13,13 +14,12 @@ export const createJob = async (reqBody) => {
         handedCv,
         handedAsgmt,
         handedCover,
-        nextEventDate,
-        nextEventDesc,
         notes,
     } = reqBody
 
     const newJob = {
-        position: position,
+        added_by,
+        position,
         company_name: companyName,
         company_url: companyUrl,
         company_logo: companyLogo,
@@ -30,9 +30,7 @@ export const createJob = async (reqBody) => {
         handed_cv: handedCv,
         handed_asgmt: handedAsgmt,
         handed_cover: handedCover,
-        next_event_date: nextEventDate,
-        next_event_description: nextEventDesc,
-        notes: notes,
+        notes,
     }
     return await Jobs.create(newJob)
 }
