@@ -3,7 +3,7 @@ import SearchSVG from "./SearchSVG";
 
 export default function Search() {
   return (
-    <div className="flex border-white border-2 align-center bg-white justify-between">
+    <div className="flex border-border rounded-lg border-2 align-center bg-white justify-between ">
       <SearchSVG />
       <input
         type="text"
