@@ -4,14 +4,16 @@ import Users from "./Auth.migration.js";
 
 // import { customJoin } from "../utils/utils.js";
 // const typeValidator = ["CAT", "DOG"];
-const statusValidator = [
-  "Application",
-  "HR Interview",
-  "Tech Interview",
-  "Manager Interview",
-  "Home Assignment",
-  "Got an Offer!",
+const phaseValidator = [
+  "APPLICATION",
+  "HR_INTVW",
+  "TECH_INTVW",
+  "MANAGER_INTVW",
+  "HOME_ASGMT",
+  "OFFER",
 ];
+
+const statusValidator = ["COMPLETED", "INACTIVE", "IN_PROGRESS", "REJECTED"];
 
 export const Jobs = db.define("jobs", {
   id: {
@@ -40,11 +42,6 @@ export const Jobs = db.define("jobs", {
       },
     },
   },
-  name: {
-    type: Sequelize.STRING,
-    allowNull: false,
-    validate: { isAlphanumeric: { msg: "Source name must be alphanumeric" } },
-  },
   position: {
     type: Sequelize.STRING,
     allowNull: false,
@@ -53,7 +50,7 @@ export const Jobs = db.define("jobs", {
       isAlpha: { msg: "job's position must be letters only" },
     },
   },
-  company_id: {
+  company_name: {
     type: Sequelize.UUID,
     defaultValue: UUIDV4,
     allowNull: false,
@@ -64,84 +61,67 @@ export const Jobs = db.define("jobs", {
       },
     },
   },
-  current_task: {
-    type: Sequelize.UUID,
-    defaultValue: UUIDV4,
-    references: {
-      model: JobTasks,
-      key: "id",
-    },
+  company_url: {
+    type: Sequelize.STRING,
     validate: {
-      isUUID: {
-        args: 4,
-        msg: "Not a valid job ID",
-      },
+      isUrl: { msg: "Not a valid URL" },
     },
   },
-  job_description: {
+  company_logo: {
+    type: Sequelize.STRING,
+    validate: {
+      isUrl: { msg: "Not a valid URL" },
+    },
+  },
+  job_desc: {
     type: Sequelize.STRING,
     allowNull: true,
     validate: {
       isAlphanumeric: {
-        message: "job_description must be numbers or characters only",
+        msg: "job_description must be numbers or characters only",
       },
     },
   },
-  source_name: {
+  job_source: {
     type: UUID,
     validate: {
-      isUUID: {
-        args: 4,
-        msg: "Not a valid job ID",
-      },
+      isUrl: { msg: "Not a valid URL" },
     },
   },
-  source_url: {
-    type: UUID,
+  phase: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    defaultValue: "APPLICATION",
     validate: {
-      isUUID: {
-        args: 4,
-        msg: "Not a valid job ID",
+      isIn: {
+        args: [phaseValidator],
+        msg: `Job phase must be ${typeValidator}`,
       },
     },
   },
   status: {
     type: Sequelize.STRING,
-    allowNull: false,
     validate: {
       isIn: {
         args: [statusValidator],
-        message: `Jobs' status must be 
-            ${typeValidator}`,
+        msg: `Job Status must be ${statusValidator}`,
       },
     },
   },
-});
-
-export const Company = db.define("company", {
-  id: {
-    type: Sequelize.UUID,
-    defaultValue: Sequelize.UUIDV4,
-    allowNull: false,
-    primaryKey: true,
-    validate: {
-      isUUID: {
-        args: 4,
-        msg: "Not a valid job ID",
-      },
-    },
+  handed_cv: {
+    //bool
   },
-  url: {
-    type: Sequelize.STRING,
-    validate: {
-      isUrl: { message: "Not a valid URL" },
-    },
+  handed_asgmt: {
+    //bool
   },
-  logo: {
-    type: Sequelize.STRING,
-    validate: {
-      isUrl: { message: "Not a valid URL" },
-    },
+  handed_cover: {
+    //bool
+  },
+  next_event_date: {
+    //date
+  },
+  next_event_desc: {
+    //string - describing next event
   },
 });
 
@@ -171,12 +151,12 @@ export const JobTasks = db.define("job_tasks", {
     type: Sequelize.STRING,
     allowNull: false,
     unique: true,
-    validate: { isEmail: { message: "Not a valid email" } },
+    validate: { isEmail: { msg: "Not a valid email" } },
   },
   deadline: {
     type: Sequelize.DATE,
     validate: {
-      isDate: { message: "deadline must be a date" },
+      isDate: { msg: "deadline must be a date" },
     },
   },
   isCompleted: {
