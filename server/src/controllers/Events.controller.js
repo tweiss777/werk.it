@@ -44,8 +44,6 @@ export const getEventById = async (req, res, next) => {
 export const addEvent = async (req, res, next) => {
   const { user, body } = req;
   try {
-    console.log('...body added by', { ...body, added_by: user.id })
-
     const eventAdded = await createEvent({ ...body, added_by: user.id });
     res.json(eventAdded);
   } catch (err) {

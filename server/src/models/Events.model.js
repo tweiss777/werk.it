@@ -12,6 +12,7 @@ export const updateEvent = async (payload, where) => {
 };
 
 export const deleteEvent = async (where) => {
+  console.log("WHERE in deleteEvent", where);
   return await Events.destroy({
     where,
   });
