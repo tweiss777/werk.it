@@ -1,4 +1,9 @@
-import { Jobs, Company } from "../migrations/Jobs.migration.js";
+import {
+  Jobs,
+  Company,
+  Source,
+  JobTasks,
+} from "../migrations/Jobs.migration.js";
 import { error, exposeAttributes } from "../utils/utils.js";
 
 const publicAttributesJobs = [
@@ -10,7 +15,16 @@ const publicAttributesJobs = [
 ];
 
 export const createJob = async (reqBody) => {
-  const { name, position, companyName, jobDescription, status } = req.body;
+  const { name, position, companyName, jobDescription, status, soureUrl, sourceName } = req.body;
+
+  /*
+  added_by  -> will be the userId of the user. Where do we get that?
+  name: name -> string
+  position: position -> string
+  current_task: -> isUUID -> but needs to reference a new task. Also need to create a new task when we create a job?
+  job_descripiton: jobDescription 
+  source_id: try to find the source by name in the DB, and set the ID
+*/
 
   //find the user by the id - what will be passed in req.body?
   //after getting the token, get the ID of the user and add to created_by
@@ -20,19 +34,18 @@ export const createJob = async (reqBody) => {
   //assign company_id = the companies id
   //current_task
   //job_description add
-  //source_id ?
   //setStatus
 };
 
-export const updateJob = async (reqBody) => {
+export const editJob = async (reqBody) => {
   const { name, position, companyName, jobDescription, status } = req.body;
 };
 
-export const deleteJob = async (reqBody) => {
+export const removeJob = async (reqBody) => {
   const { name, position, companyName, jobDescription, status } = req.body;
 };
 
-export const getJobById = async (where, isPublic = false) => {
+export const readJob = async (where, isPublic = false) => {
   const jobs = await Jobs.findOne({
     where,
     ...(isPublic && { attributes: publicAttributes }),
@@ -40,42 +53,36 @@ export const getJobById = async (where, isPublic = false) => {
   return jobs;
 };
 
-export const getAllJobs = async (isPublic = false) => {
+export const readAllJobs = async (isPublic = false) => {
   const jobs = await Jobs.findAll(
     ...(isPublic && { attributes: publicAttributes })
   );
   return jobs;
 };
 
-export const getJobsByUser = async (isPublic = false) => {
+
+export const addSavedJob = async (isPublic = false) => {
   const jobs = await Jobs.findAll(
     ...(isPublic && { attributes: publicAttributes })
   );
   return jobs;
 };
 
-export const saveJob = async (isPublic = false) => {
+export const readAllSavedJobs = async (isPublic = false) => {
   const jobs = await Jobs.findAll(
     ...(isPublic && { attributes: publicAttributes })
   );
   return jobs;
 };
 
-export const getAllSavedJobsByUser = async (isPublic = false) => {
+export const removeSavedJob = async (isPublic = false) => {
   const jobs = await Jobs.findAll(
     ...(isPublic && { attributes: publicAttributes })
   );
   return jobs;
 };
 
-export const unSaveJob = async (isPublic = false) => {
-  const jobs = await Jobs.findAll(
-    ...(isPublic && { attributes: publicAttributes })
-  );
-  return jobs;
-};
-
-export const getCompanyById = async (where, isPublic = false) => {
+export const readCompany = async (where, isPublic = false) => {
   const company = Company.findOne({
     where,
     ...(isPublic && { attributes: publicAttributes }),

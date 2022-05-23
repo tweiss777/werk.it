@@ -87,7 +87,16 @@ export const Jobs = db.define("jobs", {
       },
     },
   },
-  source_id: {
+  source_name: {
+    type: UUID,
+    validate: {
+      isUUID: {
+        args: 4,
+        msg: "Not a valid job ID",
+      },
+    },
+  },
+  source_url: {
     type: UUID,
     validate: {
       isUUID: {
@@ -136,32 +145,6 @@ export const Company = db.define("company", {
   },
 });
 
-export const Source = db.define("source", {
-  id: {
-    type: Sequelize.UUID,
-    defaultValue: Sequelize.UUIDV4,
-    allowNull: false,
-    primaryKey: true,
-    validate: {
-      isUUID: {
-        args: 4,
-        msg: "Not a valid job ID",
-      },
-    },
-  },
-  name: {
-    type: Sequelize.STRING,
-    allowNull: false,
-    validate: { isAlphanumeric: { msg: "Source name must be alphanumeric" } },
-  },
-  url: {
-    type: Sequelize.STRING,
-    validate: {
-      isUrl: true,
-    },
-  },
-});
-
 export const JobTasks = db.define("job_tasks", {
   id: {
     type: Sequelize.UUID,
@@ -205,5 +188,3 @@ export const JobTasks = db.define("job_tasks", {
 (async () => {
   await db.sync();
 })();
-
-export default Jobs;
