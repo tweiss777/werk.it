@@ -18,10 +18,10 @@ export const Events = db.define("events", {
   job_id: {
     type: Sequelize.UUID,
     allowNull: false,
-    // references: {
-    //   model: Jobs,
-    //   key: "id",
-    // },
+    references: {
+      model: Jobs,
+      key: "id",
+    },
     validate: {
       isUUID: {
         args: 4,
@@ -32,10 +32,10 @@ export const Events = db.define("events", {
   added_by: {
     type: Sequelize.UUID,
     allowNull: false,
-    // references: {
-    //   model: Jobs,
-    //   key: "id",
-    // },
+    references: {
+      model: Jobs,
+      key: "id",
+    },
     validate: {
       isUUID: {
         args: 4,
@@ -59,6 +59,6 @@ export const Events = db.define("events", {
   },
 });
 
-// (async () => {
-//   await db.sync();
-// })();
+(async () => {
+  await db.sync();
+})();
