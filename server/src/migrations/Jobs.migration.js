@@ -2,9 +2,9 @@ import { Sequelize } from "sequelize";
 import db from "../data/Database.js";
 import Users from "./Auth.migration.js";
 
-// import { customJoin } from "../utils/utils.js";
-// const typeValidator = ["CAT", "DOG"];
 const phaseValidator = [
+  "WISHLIST",
+  "NOT_STARTED",
   "APPLICATION",
   "HR_INTVW",
   "TECH_INTVW",
@@ -84,8 +84,8 @@ export const Jobs = db.define("jobs", {
   },
   phase: {
     type: Sequelize.STRING,
-    allowNull: false,
-    defaultValue: "APPLICATION",
+    allowNull: true,
+    defaultValue: "NOT_STARTED",
     validate: {
       isIn: {
         args: [phaseValidator],
@@ -118,20 +118,6 @@ export const Jobs = db.define("jobs", {
     defaultValue: false,
     allowNull: false,
   },
-  next_event_date: {
-    type: Sequelize.DATE,
-    allowNull: false,
-    validate: {
-      isDate: { msg: "nextEventDate must be a date" },
-    },
-  },
-  next_event_desc: {
-    type: Sequelize.STRING,
-    allowNull: false,
-    validate: {
-      isAlphanumeric: { msg: "nextEventDesc can only be alphanumeric values" },
-    },
-  },
   notes: {
     type: Sequelize.STRING,
     allowNull: true,
@@ -141,3 +127,12 @@ export const Jobs = db.define("jobs", {
 (async () => {
   await db.sync();
 })();
+
+/* 
+table for events
+  id,
+  jobId, FK
+  addedBy, FK
+  date of event,
+  event description,
+*/

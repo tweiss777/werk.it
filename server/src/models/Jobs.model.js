@@ -1,14 +1,6 @@
 import { Jobs } from "../migrations/Jobs.migration.js";
 import { error, exposeAttributes } from "../utils/utils.js";
 
-const publicAttributesJobs = [
-  "id",
-  "email",
-  "firstName",
-  "lastName",
-  "is_admin",
-];
-
 export const createJob = async (reqBody) => {
   const {
     position,
@@ -43,54 +35,26 @@ export const createJob = async (reqBody) => {
     notes: notes,
   };
 
-  await Jobs.create({
-    firstName,
-    lastName,
-    email,
-    password: hashPassword,
-  });
+  return await Jobs.create({ newJob });
 };
 
-export const updateJob = async (reqBody) => {
-  const { name, position, companyName, jobDescription, status } = req.body;
+export const updateJob = async (payload, where) => {
+  return await Jobs.update({ payload }, { where });
 };
 
-export const deleteJob = async (reqBody) => {
-  const { name, position, companyName, jobDescription, status } = req.body;
-};
-
-export const readJob = async (where, isPublic = false) => {
-  const jobs = await Jobs.findOne({
+export const deleteJob = async (where) => {
+  return await Jobs.destroy({
     where,
-    ...(isPublic && { attributes: publicAttributes }),
   });
-  return jobs;
 };
 
-export const readAllJobs = async (isPublic = false) => {
-  const jobs = await Jobs.findAll(
-    ...(isPublic && { attributes: publicAttributes })
-  );
-  return jobs;
+export const readJob = async (where) => {
+  const job = await Jobs.findOne({
+    where,
+  });
+  return job;
 };
 
-export const addSavedJob = async (isPublic = false) => {
-  const jobs = await Jobs.findAll(
-    ...(isPublic && { attributes: publicAttributes })
-  );
-  return jobs;
-};
-
-export const readSavedJobs = async (isPublic = false) => {
-  const jobs = await Jobs.findAll(
-    ...(isPublic && { attributes: publicAttributes })
-  );
-  return jobs;
-};
-
-export const deleteSavedJob = async (isPublic = false) => {
-  const jobs = await Jobs.findAll(
-    ...(isPublic && { attributes: publicAttributes })
-  );
-  return jobs;
+export const readAllJobs = async (where) => {
+  return await Jobs.findAll(where);
 };

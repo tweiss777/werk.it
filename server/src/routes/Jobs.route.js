@@ -39,6 +39,6 @@ router
 router
     .route('/wishlist/:id')
     // remove wishlist Job
-    .delete(verifyToken, unSaveJob)
+    .delete(verifyToken, removeJob)
 
 export default router
