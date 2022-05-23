@@ -2,7 +2,7 @@ import { Sequelize } from "sequelize";
 import db from "../data/Database.js";
 import { Jobs } from "./Jobs.migration.js";
 
-export const Events = db.define("Events", {
+export const Events = db.define("events", {
   id: {
     type: Sequelize.UUID,
     defaultValue: Sequelize.UUIDV4,
