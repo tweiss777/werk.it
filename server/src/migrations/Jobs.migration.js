@@ -127,12 +127,3 @@ export const Jobs = db.define("jobs", {
 (async () => {
   await db.sync();
 })();
-
-/* 
-table for events
-  id,
-  jobId, FK
-  addedBy, FK
-  date of event,
-  event description,
-*/
