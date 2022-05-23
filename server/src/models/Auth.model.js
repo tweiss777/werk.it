@@ -5,13 +5,6 @@ import { error, exposeAttributes } from '../utils/utils.js'
 
 const publicAttributes = ['id', 'email', 'firstName', 'lastName', 'is_admin']
 
-export const readAllUsers = async (isPublic = false) => {
-    const users = await Users.findAll(
-        ...(isPublic && { attributes: publicAttributes })
-    )
-    return users
-}
-
 export const readUser = async (where, isPublic = false) => {
     const user = await Users.findOne({
         where,

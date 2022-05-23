@@ -47,18 +47,14 @@ export const Jobs = db.define("jobs", {
     allowNull: false,
     defaultValue: "Software Developer",
     validate: {
-      isAlpha: { msg: "job's position must be letters only" },
+      isAlpha: { msg: "jobs' position must be letters only" },
     },
   },
   company_name: {
-    type: Sequelize.UUID,
-    defaultValue: UUIDV4,
+    type: Sequelize.STRING,
     allowNull: false,
     validate: {
-      isUUID: {
-        args: 4,
-        msg: "Not a valid job ID",
-      },
+      isAlphanumeric: { msg: "companyName must be alphanumeric" },
     },
   },
   company_url: {
@@ -70,7 +66,7 @@ export const Jobs = db.define("jobs", {
   company_logo: {
     type: Sequelize.STRING,
     validate: {
-      isUrl: { msg: "Not a valid URL" },
+      isUrl: { msg: "Not valid URL" },
     },
   },
   job_desc: {
@@ -78,15 +74,13 @@ export const Jobs = db.define("jobs", {
     allowNull: true,
     validate: {
       isAlphanumeric: {
-        msg: "job_description must be numbers or characters only",
+        msg: "job_description must be alphanumeric",
       },
     },
   },
   job_source: {
-    type: UUID,
-    validate: {
-      isUrl: { msg: "Not a valid URL" },
-    },
+    type: Sequelize.UUID,
+    isUrl: { msg: "Not valid URL" },
   },
   phase: {
     type: Sequelize.STRING,
@@ -95,12 +89,13 @@ export const Jobs = db.define("jobs", {
     validate: {
       isIn: {
         args: [phaseValidator],
-        msg: `Job phase must be ${typeValidator}`,
+        msg: `Job phase must be ${phaseValidator}`,
       },
     },
   },
   status: {
     type: Sequelize.STRING,
+    allowNull: false,
     validate: {
       isIn: {
         args: [statusValidator],
@@ -109,62 +104,40 @@ export const Jobs = db.define("jobs", {
     },
   },
   handed_cv: {
-    //bool
+    type: Sequelize.BOOLEAN,
+    defaultValue: false,
+    allowNull: false,
   },
   handed_asgmt: {
-    //bool
+    type: Sequelize.BOOLEAN,
+    defaultValue: false,
+    allowNull: false,
   },
   handed_cover: {
-    //bool
+    type: Sequelize.BOOLEAN,
+    defaultValue: false,
+    allowNull: false,
   },
   next_event_date: {
-    //date
+    type: Sequelize.DATE,
+    allowNull: false,
+    validate: {
+      isDate: { msg: "nextEventDate must be a date" },
+    },
   },
   next_event_desc: {
-    //string - describing next event
+    type: Sequelize.STRING,
+    allowNull: false,
+    validate: {
+      isAlphanumeric: { msg: "nextEventDesc can only be alphanumeric values" },
+    },
+  },
+  notes: {
+    type: Sequelize.STRING,
+    allowNull: true,
   },
 });
 
-export const JobTasks = db.define("job_tasks", {
-  id: {
-    type: Sequelize.UUID,
-    defaultValue: Sequelize.UUIDV4,
-    allowNull: false,
-    primaryKey: true,
-    validate: {
-      isUUID: {
-        args: 4,
-        msg: "Not a valid job ID",
-      },
-    },
-    references: {
-      model: Jobs,
-      key: "id",
-    },
-  },
-  name: {
-    type: Sequelize.STRING,
-    allowNull: false,
-    validate: { isAlphanumeric: { msg: "Source name must be alphanumeric" } },
-  },
-  contact_email: {
-    type: Sequelize.STRING,
-    allowNull: false,
-    unique: true,
-    validate: { isEmail: { msg: "Not a valid email" } },
-  },
-  deadline: {
-    type: Sequelize.DATE,
-    validate: {
-      isDate: { msg: "deadline must be a date" },
-    },
-  },
-  isCompleted: {
-    type: Sequelize.BOOLEAN,
-    allowNull: false,
-    defaultValue: false,
-  },
-});
 (async () => {
   await db.sync();
 })();

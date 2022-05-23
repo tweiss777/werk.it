@@ -1,9 +1,4 @@
-import {
-  Jobs,
-  Company,
-  Source,
-  JobTasks,
-} from "../migrations/Jobs.migration.js";
+import { Jobs } from "../migrations/Jobs.migration.js";
 import { error, exposeAttributes } from "../utils/utils.js";
 
 const publicAttributesJobs = [
@@ -15,33 +10,52 @@ const publicAttributesJobs = [
 ];
 
 export const createJob = async (reqBody) => {
-  const { name, position, companyName, jobDescription, status, soureUrl, sourceName } = req.body;
+  const {
+    position,
+    companyName,
+    companyLogo,
+    jobDescription,
+    jobSource,
+    jobPhase,
+    jobStatus,
+    handedCv,
+    handedAsgmt,
+    handedCover,
+    nextEventDate,
+    nextEventDesc,
+    notes,
+  } = req.body;
 
-  /*
-  added_by  -> will be the userId of the user. Where do we get that?
-  name: name -> string
-  position: position -> string
-  current_task: -> isUUID -> but needs to reference a new task. Also need to create a new task when we create a job?
-  job_descripiton: jobDescription 
-  source_id: try to find the source by name in the DB, and set the ID
-*/
+  const newJob = {
+    position: position,
+    company_name: companyName,
+    company_url: companyUrl,
+    company_logo: companyLogo,
+    job_desc: jobDescription,
+    job_source: jobSource,
+    phase: jobPhase,
+    status: jobStatus,
+    handed_cv: handedCv,
+    handed_asgmt: handedAsgmt,
+    handed_cover: handedCover,
+    next_event_date: nextEventDate,
+    next_event_description: nextEventDesc,
+    notes: notes,
+  };
 
-  //find the user by the id - what will be passed in req.body?
-  //after getting the token, get the ID of the user and add to created_by
-  //name
-  //position
-  //find company with name in db, if not exist then create it.
-  //assign company_id = the companies id
-  //current_task
-  //job_description add
-  //setStatus
+  await Jobs.create({
+    firstName,
+    lastName,
+    email,
+    password: hashPassword,
+  });
 };
 
-export const editJob = async (reqBody) => {
+export const updateJob = async (reqBody) => {
   const { name, position, companyName, jobDescription, status } = req.body;
 };
 
-export const removeJob = async (reqBody) => {
+export const deleteJob = async (reqBody) => {
   const { name, position, companyName, jobDescription, status } = req.body;
 };
 
@@ -60,7 +74,6 @@ export const readAllJobs = async (isPublic = false) => {
   return jobs;
 };
 
-
 export const addSavedJob = async (isPublic = false) => {
   const jobs = await Jobs.findAll(
     ...(isPublic && { attributes: publicAttributes })
@@ -68,23 +81,16 @@ export const addSavedJob = async (isPublic = false) => {
   return jobs;
 };
 
-export const readAllSavedJobs = async (isPublic = false) => {
+export const readSavedJobs = async (isPublic = false) => {
   const jobs = await Jobs.findAll(
     ...(isPublic && { attributes: publicAttributes })
   );
   return jobs;
 };
 
-export const removeSavedJob = async (isPublic = false) => {
+export const deleteSavedJob = async (isPublic = false) => {
   const jobs = await Jobs.findAll(
     ...(isPublic && { attributes: publicAttributes })
   );
   return jobs;
-};
-
-export const readCompany = async (where, isPublic = false) => {
-  const company = Company.findOne({
-    where,
-    ...(isPublic && { attributes: publicAttributes }),
-  });
 };
