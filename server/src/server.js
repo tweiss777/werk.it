@@ -7,7 +7,7 @@ import router from './routes/Root.route.js'
 dotenv.config()
 
 const app = express()
-const { CORS_DOMAINS: corsDomains } = process.env
+const { CORS_DOMAINS: corsDomains, PORT } = process.env
 
 const whiteList = corsDomains.split(', ')
 const corsOptions = {
@@ -37,4 +37,4 @@ app.use((err, req, res, next) => {
     }
 })
 
-app.listen(5000, () => console.log('Server running at port 5000'))
+app.listen(PORT, () => console.log('Server running at port 5000'))
