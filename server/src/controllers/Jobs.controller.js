@@ -9,7 +9,7 @@ import {
 // Get Jobs
 export const getAllJobs = async (req, res, next) => {
     const { user, query } = req
-    const where = { ...query, added_by: user.id }
+    const where = { ...query, addedBy: user.id }
     try {
         const Jobs = await readAllJobs(where)
         res.json(Jobs)
@@ -20,7 +20,7 @@ export const getAllJobs = async (req, res, next) => {
 
 export const getJob = async (req, res, next) => {
     const { id } = req.params
-    const where = { added_by: id }
+    const where = { addedBy: id }
     try {
         const Job = await readJob(where)
         res.json(Job)
@@ -33,7 +33,7 @@ export const getJob = async (req, res, next) => {
 export const addJob = async (req, res, next) => {
     const { user, body } = req
     try {
-        const jobAdded = await createJob({...body, added_by: user.id})
+        const jobAdded = await createJob({...body, addedBy: user.id})
         res.json(jobAdded)
     } catch (err) {
         next(err)
@@ -44,7 +44,7 @@ export const addJob = async (req, res, next) => {
 export const editJob = async (req, res, next) => {
     const { id } = req.params
     const { user } = req
-    const where = { id, added_by: user.id }
+    const where = { id, addedBy: user.id }
     const editedJob = req.body
     try {
         const JobUpdated = await updateJob(editedJob, where)
@@ -58,7 +58,7 @@ export const editJob = async (req, res, next) => {
 export const removeJob = async (req, res, next) => {
     const { id } = req.params
     const { user } = req
-    const where = { id, added_by: user.id }
+    const where = { id, addedBy: user.id }
     try {
         const JobUpdated = await deleteJob(where)
         res.json(JobUpdated)
@@ -72,7 +72,7 @@ const wishlistPhase = 'WISHLIST'
 
 export const getWishlistJobs = async (req, res, next) => {
     const { user, query } = req
-    const where = {...query, phase: wishlistPhase, saved_by: user.id}
+    const where = {...query, phase: wishlistPhase, addedBy: user.id}
     try {
         const savedJobs = await readAllJobs(where)
         res.json(savedJobs)
@@ -84,7 +84,7 @@ export const getWishlistJobs = async (req, res, next) => {
 export const getWishlistJob = async (req, res, next) => {
     const { id } = req.params
     const { user } = req
-    const where = {id, phase: wishlistPhase, saved_by: user.id}
+    const where = {id, phase: wishlistPhase, addedBy: user.id}
     try {
         const Job = await readJob(where)
         res.json(Job)
@@ -96,7 +96,7 @@ export const getWishlistJob = async (req, res, next) => {
 export const addWishlistJob = async (req, res, next) => {
     const { id } = req.params
     const { user, body } = req
-    const where = {...body, phase: wishlistPhase, saved_by: user.id}
+    const where = {...body, phase: wishlistPhase, addedBy: user.id}
     try {
         const jobAdded = await createJob(where)
         res.json(jobAdded)

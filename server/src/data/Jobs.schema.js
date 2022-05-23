@@ -14,10 +14,9 @@ const jobsSchema = {
         handedCv: { type: 'string' },
         handedAsgmt: { type: 'string' },
         handedCover: { type: 'string' },
-        nextEventDate: { type: 'string' },
-        nextEventDesc: { type: 'string' },
+        notes: { type: 'string' },
     },
-    required: ['name', 'runtime', 'plot', 'poster'],
+    // required: ['id', 'runtime', 'plot', 'poster'],
     additionalProperties: false,
 }
 
