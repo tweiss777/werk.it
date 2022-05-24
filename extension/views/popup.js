@@ -1,5 +1,7 @@
 'use strict';
 
+
+let url = chrome.extension.getBackgroundPage()
 // list of urls to navigate
 let urls_list = [
 	'https://website.com/page-1',
@@ -11,6 +13,7 @@ let urls_list = [
 
 // start navigation when #startNavigation button is clicked
 startNavigation.onclick = function(element) {
+	console.log("fuck you")
 	// query the current tab to find its id
 	chrome.tabs.query({active: true, currentWindow: true}, async function(tabs) {
 		for(let i=0; i<urls_list.length; i++) {
