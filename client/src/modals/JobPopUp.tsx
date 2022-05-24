@@ -1,16 +1,10 @@
 import { IJob } from "../Interfaces/IJob";
-
 import React, { useState } from "react";
 import LogoSVG from "../components/LogoSVG";
-
-
-interface IProps{
-    setDisplay: Function;
-}
-
-
-export default function JobPopUp({setDisplay}:IProps){
-
+import '../styles/jobpopup.css';
+import { usePopups } from "../hooks/usePopups";
+import CloseSVG from '../components/CloseSVG'
+export default function JobPopUp(){
 
     // states
     const [title,setTitle] = useState<string>('')
@@ -18,11 +12,12 @@ export default function JobPopUp({setDisplay}:IProps){
     const [location,setLocation] = useState<string>('')
     const [url,setUrl] = useState<string>('')
     const [desc,setDesc] = useState<string>('')
+    const {setShowNewJob} = usePopups()
 
 
 
     function handleCancel(){
-        setDisplay(false)        
+        setShowNewJob(false)        
     }
 
     function handleSubmit(){
@@ -48,7 +43,7 @@ export default function JobPopUp({setDisplay}:IProps){
                     {/* where logo and exit button will be placed */}
                     <LogoSVG />
                     {/* exit button goes here */}
-                    <button onClick={handleCancel}>X</button>
+                    <button className="close" onClick={handleCancel}><CloseSVG /></button>
                 </div>
                 <div className="form-header">
                     <h1>Add a new job!</h1>
@@ -80,11 +75,11 @@ export default function JobPopUp({setDisplay}:IProps){
                     
                     <div className="form-input">
                         <label >Description</label>
-                        <input type='text' onChange={(event: React.ChangeEvent<HTMLInputElement>) => setDesc(event.target.value)} />    
+                        <textarea onChange={(event:React.ChangeEvent<HTMLTextAreaElement>) => setDesc(event.target.value)}></textarea>    
                     </div>
                     <div className="form-input">
-                        <button onClick={handleSubmit}>Save</button>
-                        <button onClick={handleCancel}>Cancel</button>
+                        <button  className="save" onClick={handleSubmit}>Save</button>
+                        <button className="cancel" onClick={handleCancel}>Cancel</button>
                     </div>
 
                     

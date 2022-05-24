@@ -1,17 +1,16 @@
 import React from "react";
+import { usePopups } from "../hooks/usePopups";
 import AddButtonSVG from "./AddButtonSVG";
 
-interface IProps{
-  setShowAddJob: Function;
-}
 
 
-export default function AddButton({setShowAddJob}: IProps) {
+export default function AddButton() {
+  const {setShowNewJob} = usePopups();
   return (
     <div>
-      <button onClick={() => setShowAddJob(true)} className="bg-addButton text-white flex items-center px-3 py-2 rounded ">
+      <button onClick={() => setShowNewJob(true)} className="bg-addButton text-white flex items-center px-3 py-2 rounded ">
         <AddButtonSVG />
-        <div className="px-1"> Add Job</div>
+        <div className="px-1">Add Job</div>
       </button>
     </div>
   );
