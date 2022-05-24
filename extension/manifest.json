@@ -17,7 +17,7 @@
         }
     ],
 
-    "permissions": ["declarativeContent", "tabs", "downloads", "activeTab"],
+    "permissions": ["declarativeContent", "tabs", "downloads", "activeTab","scripting"],
 
     "homepage_url": "https://github.com/drakenwan/"
 }
