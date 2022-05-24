@@ -22,7 +22,7 @@ const router = express.Router()
 // Authentication API
 router.post('/signup', Register)
 router.post('/login', Login)
-router.delete('/logout', Logout)
+router.delete('/logout', verifyToken, Logout)
 router.get('/token', refreshToken)
 
 // // Jobs API

@@ -65,13 +65,13 @@ export const loginUser = async (reqBody) => {
     return { accessToken, refreshToken }
 }
 
-export const logoutUser = async (refreshToken) => {
-    if (!refreshToken) return { status: 204 }
+export const logoutUser = async (userId) => {
+    if (!userId) return { status: 204 }
 
-    const user = await readUser({ refresh_token: refreshToken })
+    const user = await readUser({ id: userId })
     if (!user) return { status: 204 }
 
-    await updateUser(user.id, { refresh_token: null })
+    await updateUser(userId, { refresh_token: null })
     return { status: 200, clear: true }
 }
 
