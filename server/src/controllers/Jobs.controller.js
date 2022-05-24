@@ -23,7 +23,6 @@ export const getJob = async (req, res, next) => {
   const { user } = req;
   const { id } = req.params;
   const where = { id, added_by: user.id };
-  console.log('where GETJOB', where)
   try {
     const Job = await readJob(where);
     res.json(Job);
@@ -74,10 +73,9 @@ export const removeJob = async (req, res, next) => {
 
 // Wishlist Jobs
 const wishlistPhase = "WISHLIST";
-
 export const getWishlistJobs = async (req, res, next) => {
   const { user, query } = req;
-  const where = { ...query, phase: wishlistPhase, added_by: user.id };
+  const where = { phase: wishlistPhase, added_by: user.id };
   try {
     const savedJobs = await readAllJobs(where);
     res.json(savedJobs);
@@ -89,7 +87,7 @@ export const getWishlistJobs = async (req, res, next) => {
 export const getWishlistJob = async (req, res, next) => {
   const { id } = req.params;
   const { user } = req;
-  const where = { id, phase: wishlistPhase, added_by: user.id };
+  const where = { phase: wishlistPhase, added_by: user.id, id: id };
   try {
     const Job = await readJob(where);
     res.json(Job);
@@ -99,12 +97,12 @@ export const getWishlistJob = async (req, res, next) => {
 };
 
 export const addWishlistJob = async (req, res, next) => {
-  const { id } = req.params;
   const { user, body } = req;
-  const where = { ...body, phase: wishlistPhase, added_by: user.id };
+  body.jobPhase = wishlistPhase;
+  const where = { ...body, added_by: user.id };
   try {
-    const jobAdded = await createJob(where);
-    res.json(jobAdded);
+    const wishlistJobAdded = await createJob(where);
+    res.json(wishlistJobAdded);
   } catch (err) {
     next(err);
   }

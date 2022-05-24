@@ -56,5 +56,5 @@ export const readJob = async (where) => {
 };
 
 export const readAllJobs = async (where) => {
-  return await Jobs.findAll({ where });
+  return await Jobs.findAll( where );
 };

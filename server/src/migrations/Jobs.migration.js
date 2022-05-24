@@ -50,9 +50,6 @@ export const Jobs = db.define("jobs", {
   company_name: {
     type: Sequelize.STRING,
     allowNull: false,
-    validate: {
-      isAlphanumeric: { msg: "companyName must be alphanumeric" },
-    },
   },
   company_url: {
     type: Sequelize.TEXT,
