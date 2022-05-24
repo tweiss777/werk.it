@@ -1,0 +1,85 @@
+
+
+.popup-bg{
+    @apply w-full h-full flex flex-row justify-center;
+    position: fixed;
+    background-color: #00000091;
+
+}
+
+.popup-bg h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    line-height: 38.73px;
+    color: #B10494; 
+}
+
+
+.popup a{
+    color: #B10494;
+}
+
+
+
+.popup{
+
+    padding: 20px;
+    @apply flex flex-col self-center justify-evenly;
+    background: linear-gradient(180deg, #F2ECF9 0%, #F4F0E9 100%);
+    height: 90vh;
+    width: 80vw;
+    border-radius: 20px;
+    color: #B10494;
+
+}
+
+.popup .form-header{
+    text-align: center;
+    transform: translateY(-10px)
+}
+
+
+.popup .form-input {
+    @apply flex flex-col justify-start;
+}
+
+.popup .form-input:last-child{
+    @apply flex flex-row justify-end;
+    /* padding: 3% 0; */
+}
+
+.popup .save{
+    height: 44px;
+    color: white;
+    border-radius: 8px;    
+    width: 10%;
+    background-color:#B10494;
+    margin-right: 2%;
+}   
+
+.popup .cancel{
+    height: 44px;
+    color: white;
+    border-radius: 8px;
+    width: 10%;
+    background-color:#65676D;
+    
+}
+
+.popup .form-input input{
+    color: black;
+    border-radius: 8px;
+}
+
+.popup textarea{
+    border-radius: 8px;
+    color: black;
+    resize:none;
+}
+
+
+
+
+.form-top{
+    @apply flex flex-row justify-between
+}
