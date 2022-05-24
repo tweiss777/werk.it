@@ -1,5 +1,5 @@
 export interface IJob{
-    job_id: string,
+    job_id?: string,
     title: string,
     company: string,
     location: string,
