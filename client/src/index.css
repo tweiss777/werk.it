@@ -2,20 +2,47 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .application {
+    color: "#2A07E3";
+    background-color: "#ECEAF4";
+  }
+  .tech {
+    color: "#AF1DC8";
+    background-color: "#FADEFF";
+  }
+  .hr {
+    color: "#ED8102";
+    background-color: "#FFFDE8";
+  }
+  .mgmt {
+    color: "#189D7D";
+    background-color: "#E8FFE0";
+  }
+  .home {
+    color: "#E21A1A";
+    background-color: "#FFE8E8";
+  }
+  .offer {
+    color: "#FFFFFF";
+    background-color: "#2A07E3";
+  }
+}
+
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
 html,
 body,
 #root {
-    margin: 0 !important;
-    padding: 0 !important;
-    height: 100vh;
-    width: 100vw;
-    max-width: 100vw;
-    background: linear-gradient(180deg, #F2ECF9 0%, #F4F0E9 100%);;
-    
-    overflow: hidden;
-    box-sizing: border-box;
+  margin: 0 !important;
+  padding: 0 !important;
+  height: 100vh;
+  width: 100vw;
+  max-width: 100vw;
+  background: linear-gradient(180deg, #f2ecf9 0%, #f4f0e9 100%);
+
+  overflow: hidden;
+  box-sizing: border-box;
 }
 #root {
   overflow: auto;
