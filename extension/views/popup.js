@@ -29,12 +29,13 @@ scrape.onclick = function() {
 
 function scrapedata(event){
 	const cards = document.querySelector('.job-card-container')
-
+	let company_logo;
 	try{
-
+		company_logo = document.querySelector('.p5').getElementsByTagName('img')[0].src
+		console.log(company_logo)
 	}
 	catch(err){
-
+		console.error(err)
 	}
 
 	const company_url = window.location.href
