@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import AddButton from "../components/AddButton";
 import FilterTab from "../components/FilterTab";
+import PageDropdown from "../components/PageDropdown";
 import Search from "../components/Search";
 import Table from "../components/Table";
 import { usePopups } from "../hooks/usePopups";
@@ -19,7 +20,7 @@ export default function Dashboard() {
           <AddButton /> <Search />
         </div>
         <div className="flex justify-between mx-1 ">
-          <div className="text-xs py-2 self-center">
+          <div className=" py-2 self-center">
             Found {matchingJobs} matching jobs
           </div>
           <FilterTab />
@@ -27,7 +28,14 @@ export default function Dashboard() {
         <div className="border-outline border rounded-lg">
           <Table />
         </div>
-        <div>Show </div>
+        <div>
+          <div className="flex py-3">
+            <span className="self-center">Show</span> <PageDropdown />
+            <span className="self-center"> entries per page</span>
+          </div>
+
+          <div>{/* <Pages/> */}</div>
+        </div>
       </div>
     </div>
   );
