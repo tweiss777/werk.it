@@ -10,11 +10,8 @@
     "@types/node": "^17.0.33",
     "@types/react": "^18.0.9",
     "@types/react-dom": "^18.0.4",
-<<<<<<< HEAD
     "@types/react-fontawesome": "^1.6.5",
-=======
     "ajv": "^8.11.0",
->>>>>>> master
     "axios": "^0.27.2",
     "babel-plugin-macros": "^3.1.0",
     "flowbite": "^1.4.7",

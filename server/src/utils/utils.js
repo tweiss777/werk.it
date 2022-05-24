@@ -31,7 +31,7 @@ export const translateFields = (fields) => {
     
     const dbFields = {
         id,
-        added_by: addedBy || added_by,
+        added_by: addedBy,
         position,
         company_name: companyName,
         company_url: companyUrl,
@@ -46,8 +46,8 @@ export const translateFields = (fields) => {
         notes,
         ...rest
     }
-
-    return cleanObject(dbFields)
+    return dbFields
+    // return cleanObject(dbFields) // this was returning undefined, might want to add it later
 }
 
 export const exposeAttributes = (obj, attributes) =>
