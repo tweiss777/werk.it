@@ -39,7 +39,7 @@ export const createJob = async (reqBody) => {
 };
 
 export const updateJob = async (payload, where) => {
-  const jobToUpdate = await Jobs.findOne({where});
+  const jobToUpdate = await Jobs.findOne({ where });
   await jobToUpdate.update(payload);
   await jobToUpdate.save();
   return jobToUpdate;
@@ -56,5 +56,5 @@ export const readJob = async (where) => {
 };
 
 export const readAllJobs = async (where) => {
-  return await Jobs.findAll( where );
+  return await Jobs.findAll({ where });
 };

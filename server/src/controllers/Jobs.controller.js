@@ -74,7 +74,6 @@ export const removeJob = async (req, res, next) => {
 // Wishlist Jobs
 const wishlistPhase = "WISHLIST";
 export const getWishlistJobs = async (req, res, next) => {
-  console.log('!!!!!!!!!!!!')
   const { user, query } = req;
   const where = { phase: wishlistPhase, added_by: user.id };
   try {
