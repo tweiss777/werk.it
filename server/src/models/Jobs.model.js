@@ -1,41 +1,10 @@
 import { Sequelize } from "sequelize";
 import { Jobs } from "../migrations/Jobs.migration.js";
 
-import { error, exposeAttributes } from "../utils/utils.js";
+import { error, exposeAttributes, translateFields } from "../utils/utils.js";
 
 export const createJob = async (reqBody) => {
-  const {
-    position,
-    companyName,
-    companyLogo,
-    companyUrl,
-    jobDesc,
-    jobSource,
-    jobPhase,
-    jobStatus,
-    handedCv,
-    handedAsgmt,
-    handedCover,
-    notes,
-    added_by,
-  } = reqBody;
-
-  const newJob = {
-    added_by: added_by,
-    position: position,
-    company_name: companyName,
-    company_url: companyUrl,
-    company_logo: companyLogo,
-    job_desc: jobDesc,
-    job_source: jobSource,
-    phase: jobPhase,
-    status: jobStatus,
-    handed_cv: handedCv,
-    handed_asgmt: handedAsgmt,
-    handed_cover: handedCover,
-    notes: notes,
-  };
-  return await Jobs.create(newJob);
+  return await Jobs.create(translateFields(newJob));
 };
 
 export const updateJob = async (payload, where) => {
