@@ -75,3 +75,4 @@ export function determinePhase(phase: string): string [] {
         default:
             throw Error("Error: Invalid color code ")
     }        
+}
