@@ -43,7 +43,7 @@ export const Login = async (req, res, next) => {
     try {
         const { accessToken, refreshToken, error } = await loginUser(req.body)
         if (error) next(error)
-        res.cookie('refreshToken', refreshToken, {
+        res.cookie(tokenCookie, refreshToken, {
             httpOnly: true,
             maxAge: 24 * 60 * 60 * 1000,
         })
