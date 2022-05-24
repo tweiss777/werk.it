@@ -53,7 +53,7 @@ export const loginUser = async (reqBody) => {
     })
 
     const refreshToken = jwt.sign(
-        { userId },
+        { user },
         process.env.REFRESH_TOKEN_SECRET,
         {
             expiresIn: '1d',
