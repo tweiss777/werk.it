@@ -3,19 +3,6 @@
 
 
 
-
-let url = chrome.extension.getBackgroundPage()
-// list of urls to navigate
-let urls_list = [
-	'https://website.com/page-1',
-	'https://website.com/page-2',
-	'https://website.com/page-3',
-	'https://website.com/page-4',
-	'https://website.com/page-5',
-];
-
-
-
 scrape.onclick = function() {
 	chrome.tabs.query({active:true},function(tabs){
 		let tab = tabs[0]
@@ -28,7 +15,6 @@ scrape.onclick = function() {
 
 
 function scrapedata(event){
-	const cards = document.querySelector('.job-card-container')
 	let company_logo;
 	try{
 		company_logo = document.querySelector('.p5').getElementsByTagName('img')[0].src
