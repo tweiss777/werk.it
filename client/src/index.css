@@ -4,28 +4,41 @@
 
 @layer components {
   .application {
-    color: "#2A07E3";
-    background-color: "#ECEAF4";
+    @apply text-application bg-applicationbg;
   }
   .tech {
-    color: "#AF1DC8";
-    background-color: "#FADEFF";
+    @apply text-tech bg-techbg;
   }
   .hr {
-    color: "#ED8102";
-    background-color: "#FFFDE8";
+    @apply text-hr bg-hrbg;
   }
   .mgmt {
-    color: "#189D7D";
-    background-color: "#E8FFE0";
+    @apply text-mgmt bg-mgmtbg;
   }
   .home {
-    color: "#E21A1A";
-    background-color: "#FFE8E8";
+    @apply text-home bg-homebg;
   }
   .offer {
-    color: "#FFFFFF";
-    background-color: "#2A07E3";
+    @apply text-offer bg-offerbg;
+  }
+
+  .completed {
+    @apply text-COMPLETED_COLOR bg-COMPLETED_BG;
+  }
+  .process {
+    @apply text-PROCESS_COLOR bg-PROCESS_BG;
+  }
+  .label {
+    @apply text-label bg-LABEL_BG;
+  }
+  .rejected {
+    @apply text-REJECTED_COLOR bg-REJECTED_BG;
+  }
+  .waiting {
+    @apply text-WAITING_COLOR bg-WAITING_BG;
+  }
+  .inactive {
+    @apply text-INACTIVE_COLOR bg-INACTIVE_BG;
   }
 }
 
