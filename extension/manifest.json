@@ -1,0 +1,23 @@
+{
+    "name": "Werk.it",
+    "version": "1.0.0",
+    "manifest_version": 3,
+    "action": {
+    	"default_popup": "./views/popup.html"
+    },
+
+    "background": {
+        "service_worker": "./scripts/background.js"
+    },
+
+    "content_scripts": [
+        {
+            "matches": ["https://*.linkedin.com/*"],
+            "js": ["./scripts/content.js"]
+        }
+    ],
+
+    "permissions": ["declarativeContent", "tabs", "downloads", "activeTab"],
+
+    "homepage_url": "https://github.com/drakenwan/"
+}
