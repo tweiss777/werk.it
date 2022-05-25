@@ -1,6 +1,6 @@
 import JobsContext from "../context/JobsContext";
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 
 export default function JobsContextProvider({ children }) {
   const PORT = 9000;
@@ -17,8 +17,9 @@ export default function JobsContextProvider({ children }) {
   async function fetchAllJobs() {
     setIsLoading(true);
     try {
-      const res = await axios.get(`${serverURL}/jobs`);
+      const res: AxiosResponse = await axios.get(`${serverURL}/jobs`);
       setIsLoading(false);
+      console.log(res.data)
       return res.data;
     } catch (error) {
       console.error(error);
@@ -115,16 +116,16 @@ export default function JobsContextProvider({ children }) {
   return (
     <JobsContext.Provider
       value={{
-        isLoading,
-        setIsLoading,
-        fetchAllJobs,
-        fetchJobById,
-        addNewJob,
-        updateJob,
-        deleteJob,
-        fetchAllWishlistJobs,
-        fetchWishlistJobById,
-        deleteWishlistJob,
+        isLoading: isLoading,
+        setIsLoading:setIsLoading,
+        fetchAllJobs: fetchAllJobs,
+        fetchJobById: fetchJobById,
+        addNewJob: addNewJob,
+        updateJob: updateJob,
+        deleteJob: deleteJob,
+        fetchAllWishlistJobs: fetchAllWishlistJobs,
+        fetchWishlistJobById: fetchWishlistJobById,
+        deleteWishlistJob: deleteWishlistJob,
       }}
     >
       {children}
