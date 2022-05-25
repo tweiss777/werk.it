@@ -3,4 +3,5 @@ export interface IAppliedJob {
     status: string;
     phase: string;
     handed_in: string;
+    upcoming_event?: string;
 }
