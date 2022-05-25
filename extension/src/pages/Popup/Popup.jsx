@@ -8,7 +8,6 @@ import './Popup.css';
 import Button from '../../components/UI/buttons/Button';
 import { api, AuthContext } from '../../components/context/AuthContext';
 
-import LogoutSVG from '../../components/UI/svg/logoutSVG';
 
 const wishlistApi = `${api}/jobs/wishlist`;
 
@@ -23,7 +22,7 @@ const wishlistSchema = yup.object({
 });
 
 const Popup = () => {
-  const { login, user, axiosJWT } = useContext(AuthContext);
+  const { login, logout, user, axiosJWT } = useContext(AuthContext);
 
   const [jobData, setJobData] = useState({});
   const [loading, setLoading] = useState(false);
@@ -36,23 +35,17 @@ const Popup = () => {
     try {
       const newJob = {
         ...data,
-          "added_by": "2d6d08ae-933e-4d45-9ad7-efccc359e4f8",
-          "position": "WISHLIST JOB TEST",
-          "companyName": "WISH ITCH",
-          "companyUrl": "https://www.itc.tech",
-          "companyLogo": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.facebook.com%2FIsraelTechChallenge%2F&psig=AOvVaw3ovng-Wr1lvHCx7sYyUVcb&ust=1653424924383000&source=images&cd=vfe&ved=0CAwQjRxqFwoTCKDh-fy99vcCFQAAAAAdAAAAABAD",
-          "jobDesc": "WISHLIST ITC FULL STACK LECTURER",
-          "jobSource": "https://www.itc.tech",
-          "jobPhase": "WISHLIST",
-          "jobStatus": "INACTIVE",
-          "handedCv": false,
-          "handedAsgmt": false,
-          "handedCover": false,
-          "notes": "Let's make a lot of money"
-      }
-      const res = await axios.post(`${wishlistApi}`, newUser);
-      const { email, password } = newUser;
-      login({ email, password });
+        added_by: user.id,
+        jobPhase: 'WISHLIST',
+        jobStatus: 'INACTIVE',
+        handedCv: false,
+        handedAsgmt: false,
+        handedCover: false,
+        notes: "Let's make a lot of money",
+      };
+      console.log(newJob)
+      const res = await axiosJWT.post(`${wishlistApi}`, newJob);
+      console.log(res);
     } catch (err) {
       setError(err);
     }
@@ -64,9 +57,13 @@ const Popup = () => {
     await login({ email, password });
   };
 
+  const handleLogOut = async (data) => {
+    logout();
+  };
+
   const handleWishlist = async (data) => {
     await postWishlistJob(data);
-    handleClosePopup();
+    // handleClosePopup();
   };
 
   const handleClosePopup = () => {
@@ -123,7 +120,7 @@ const Popup = () => {
     <div className="p-5 flex flex-col gap-3 bg-gradient-to-b from-[#F2ECF9] to-[#F4F0E9]">
       <div className="flex justify-between">
         <img src={logo} alt="logo" className="w-36" />
-        <Button className="" secondary>
+        <Button className="" secondary onClick={handleLogOut}>
           Logout
         </Button>
       </div>

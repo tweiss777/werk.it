@@ -6,6 +6,7 @@ import {
   deleteJob,
 } from "../models/Jobs.model.js";
 import { deleteEvent } from "../models/Events.model.js";
+import { translateFields } from "../utils/utils.js";
 
 // Get Jobs
 export const getAllJobs = async (req, res, next) => {
@@ -85,7 +86,6 @@ export const getWishlistJobs = async (req, res, next) => {
 };
 
 export const getWishlistJob = async (req, res, next) => {
-  console.log('!!!!!!!!!!!!')
   const { id } = req.params;
   const { user } = req;
   const where = { phase: wishlistPhase, added_by: user.id, id: id };
@@ -99,8 +99,8 @@ export const getWishlistJob = async (req, res, next) => {
 
 export const addWishlistJob = async (req, res, next) => {
   const { user, body } = req;
-  body.jobPhase = wishlistPhase;
-  const where = { ...body, added_by: user.id };
+  const where = { ...body, phase: wishlistPhase, added_by: user.id };
+  const newJob = translateFields(where)
   try {
     const wishlistJobAdded = await createJob(where);
     res.json(wishlistJobAdded);

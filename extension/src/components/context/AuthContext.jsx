@@ -11,11 +11,11 @@ export const api = 'http://localhost:5000';
 axios.defaults.withCredentials = true;
 
 export const axiosJWT = axios.create({
-  withCredentials: false,
   headers: {
     'Content-Type': 'application/json',
-  },
-});
+    Authorization : `Bearer ${localStorage.getItem("token")}`
+    }
+})
 
 export const AuthContext = createContext();
 
@@ -25,20 +25,17 @@ export const AuthProvider = (props) => {
 
   // State
   const [user, setUser] = useStickyState(false, 'user', true);
-  const [token, setToken] = useState('');
-  const [expire, setExpire] = useState('');
+  const [token, setToken] = useStickyState(false, 'token', true);
+  const [expire, setExpire] = useState(false, 'expire', true);
   const [loading, setLoading] = useState(false);
 
   const setError = (error) => console.log(error);
 
   axiosJWT.interceptors.request.use(
     async (config) => {
-      if (expire * 1000 < new Date().getTime()) {
-        config.headers.Authorization = `Bearer ${token}`;
-        setToken(token);
-        const decoded = jwtDecode(token);
-        setExpire(decoded.exp);
-      }
+      config.headers.Authorization = `Bearer ${token}`;
+      const decoded = jwtDecode(token);
+      setExpire(decoded.exp);
       return config;
     },
     (error) => {
@@ -64,9 +61,9 @@ export const AuthProvider = (props) => {
     setLoading(true);
     try {
       const res = await axios.post(`${api}/login`, credential);
-      setToken(res.data.accessToken);
-      const decoded = jwtDecode(res.data.accessToken);
-      console.log(decoded)
+      setToken(res.data.refreshToken);
+      const decoded = jwtDecode(res.data.refreshToken);
+      console.log(decoded);
       setUser(decoded?.user);
     } catch (err) {
       setError(err);
@@ -78,7 +75,7 @@ export const AuthProvider = (props) => {
   const logout = async () => {
     if (loading) return;
     try {
-      setCookie('refreshToken', '');
+      setToken(false);
       setUser(false);
       await axios.delete(`${api}/logout`);
     } catch (err) {
@@ -101,11 +98,10 @@ export const AuthProvider = (props) => {
     setLoading(false);
   };
 
-//   useEffect(() => {
-//     if (!token) refreshToken();
-//     // eslint-disable-next-line react-hooks/exhaustive-deps
-//   }, []);
-
+  //   useEffect(() => {
+  //     if (!token) refreshToken();
+  //     // eslint-disable-next-line react-hooks/exhaustive-deps
+  //   }, []);
 
   // Return
   return (

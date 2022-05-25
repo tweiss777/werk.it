@@ -3,7 +3,8 @@ import { Jobs } from "../migrations/Jobs.migration.js";
 
 import { error, exposeAttributes, translateFields } from "../utils/utils.js";
 
-export const createJob = async (newJob) => {
+export const createJob = async (where) => {
+  const newJob = translateFields(where)
   return await Jobs.create(translateFields(newJob));
 };
 
