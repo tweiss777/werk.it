@@ -10,6 +10,7 @@ import PopupProivder from "./context/PopupProvider";
 import { usePopups } from "./hooks/usePopups";
 import JobPopUp from "./modals/JobPopUp";
 import Dashboard from "./pages/Dashboard";
+import Wishlist from "./pages/Wishlist";
 
 function App() {
   const { user } = useContext(AuthContext);
@@ -26,6 +27,7 @@ function App() {
               <MenuBar />
               <Routes>
                 <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/wishlist" element={<Wishlist />} />
               </Routes>
             </div>
           </PopupProivder>

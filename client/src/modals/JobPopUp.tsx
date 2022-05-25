@@ -21,13 +21,13 @@ export default function JobPopUp(){
     }
 
     function handleSubmit(){
-        const newJob: IJob = {
-            title: title,
-            company: company,
-            location: location,
-            job_url: url,
-            description: desc
-        }
+        // const newJob: IJob = {
+        //     title: title,
+        //     company: company,
+        //     location: location,
+        //     job_url: url,
+        //     description: desc
+        // }
 
 
         // send to backend here below
