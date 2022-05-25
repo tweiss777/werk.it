@@ -18,8 +18,8 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        {user === undefined && <LandingPage />}
-        {user !== undefined && (
+        {!user && <LandingPage />}
+        {user && (
           <PopupProivder>
             <NavigationBar />
             <div className="flex flex-row main-container">
