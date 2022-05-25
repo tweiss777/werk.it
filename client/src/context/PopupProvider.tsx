@@ -21,12 +21,10 @@ export default function PopupProivder({children}:IProps){
 
     
     function handleNewJobPopup(value: boolean){
-        console.log(`add new job button clicked ${value}`)
         setShowAddPopup(value)
     }
 
     function handleJobPopup(value: boolean){
-        console.log("current job button clicked")
         setShowJobPopup(value)
     }
 
