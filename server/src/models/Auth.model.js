@@ -48,20 +48,20 @@ export const loginUser = async (reqBody) => {
     const passwordOK = await bcrypt.compare(reqBody.password, password)
     if (!passwordOK) return error(400, 'Wrong Password')
 
-    const accessToken = jwt.sign({ userId }, process.env.ACCESS_TOKEN_SECRET, {
+    const keys = exposeAttributes(user.dataValues, publicAttributes)
+    
+    const accessToken = await jwt.sign({ user: keys }, process.env.ACCESS_TOKEN_SECRET, {
         expiresIn: '15s',
     })
-
-    const refreshToken = jwt.sign(
-        { user },
+    const refreshToken = await jwt.sign(
+        { user: keys },
         process.env.REFRESH_TOKEN_SECRET,
         {
             expiresIn: '1d',
         }
     )
-
+    console.log(refreshToken)
     await updateUser(userId, { refresh_token: refreshToken })
-    const res = exposeAttributes(user.dataValues, publicAttributes)
     return { accessToken, refreshToken }
 }
 

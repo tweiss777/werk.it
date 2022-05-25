@@ -13,24 +13,27 @@
     "prettier": "prettier --write '**/*.{js,jsx,ts,tsx,json,css,scss,md}'"
   },
   "dependencies": {
+    "@hookform/resolvers": "^2.8.10",
     "@hot-loader/react-dom": "^17.0.2",
+    "axios": "^0.27.2",
+    "jwt-decode": "^3.1.2",
     "postcss-loader": "^7.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-hook-form": "^7.31.2",
     "react-hot-loader": "^4.13.0",
-    "yup": "^0.32.11",
-    "@hookform/resolvers": "^2.8.10"
+    "react-use-cookie": "^1.4.0",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@babel/core": "^7.17.0",
     "@babel/plugin-proposal-class-properties": "^7.16.7",
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-react": "^7.16.7",
+    "@svgr/webpack": "^6.2.1",
     "@types/chrome": "^0.0.177",
     "@types/react": "^17.0.39",
     "@types/react-dom": "^17.0.11",
-    "@svgr/webpack": "^6.2.1",
     "autoprefixer": "^10.4.7",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.3",

@@ -1,6 +1,6 @@
 import './TextInput.css';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { nanoid } from 'nanoid';
 
@@ -26,12 +26,19 @@ const TextInput = (props) => {
   const methods = useFormContext();
   const errors = methods?.formState?.errors;
   const register = methods?.register;
+  const setValue = methods?.setValue;
 
   const handleKeyPress = (event) => {
     if (onSubmit && event.which === 13) {
       onSubmit(event);
     }
   };
+
+  useEffect(() => {
+    setValue(name, value)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [value])
+  
 
   return (
     <>
@@ -50,7 +57,6 @@ const TextInput = (props) => {
               placeholder={placeHolder}
               name={name}
               onChange={onChange}
-              value={value}
               onKeyPress={handleKeyPress}
               {...(methods && register(name))}
               {...rest}
@@ -61,7 +67,6 @@ const TextInput = (props) => {
               placeholder={placeHolder}
               name={name}
               onChange={onChange}
-              value={value}
               onKeyPress={handleKeyPress}
               {...(methods && register(name))}
               {...rest}
