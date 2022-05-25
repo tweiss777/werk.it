@@ -1,0 +1,45 @@
+.Button {
+    @apply max-h-[2.8rem] my-auto flex h-full gap-1 align-middle items-center justify-center
+    
+    bg-main text-white text-base py-1.5 px-4 rounded-xl border-2 border-transparent #{!important};
+}
+
+.Button .image {
+    @apply flex-grow-0 block py-1 h-full w-full #{!important}
+}
+.Button .image.only {
+    @apply py-1
+}
+.Button .image.only svg {
+    @apply mx-auto
+}
+
+
+.Button .image > * {
+    @apply h-full aspect-square
+}
+
+.Button .contents {
+    @apply h-full w-min basis-full leading-4 
+}
+
+
+
+.Button.secondary {
+    @apply bg-transparent border-2 border-main border-opacity-50 text-main #{!important};
+}
+
+.Button.round {
+    @apply p-1.5 aspect-square #{!important}
+}
+
+.Button {
+    @apply hover:text-white hover:bg-mainHover hover:border-transparent active:-translate-y-0.5 active:drop-shadow-lg duration-300 #{!important};
+}
+.Button.active {
+    @apply text-white bg-mainHover border-transparent #{!important}
+}
+
+.Button.noBorder {
+    @apply bg-inherit border-0 px-0 text-inherit #{!important};
+}

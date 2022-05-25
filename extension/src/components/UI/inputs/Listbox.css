@@ -1,0 +1,40 @@
+.Listbox {
+    @apply relative w-36
+}
+
+.Listbox.button {
+    @apply flex items-center relative w-full rounded-full text-main hover:text-mainHover cursor-pointer h-full px-2 text-left focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-mainHover sm:text-sm
+}
+
+.Listbox.button > .label {
+    @apply grow block truncate before:inline-block before:font-bold 
+    before:content-[attr(data-label)]
+}
+
+.Listbox.Button > .icon {
+    @apply pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2
+}
+
+.Listbox.options {
+    @apply absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm
+}
+
+.Listbox.options > .option {
+    @apply relative cursor-pointer select-none py-2 pl-10 pr-4 text-main
+}
+
+.Listbox.options > .option.active {
+    @apply bg-mainHover bg-opacity-20 text-mainHover
+}
+
+.Listbox.options > .option > .text {
+    @apply block truncate font-normal
+}
+
+.Listbox.options > .option > .text.selected {
+    @apply font-medium
+}
+
+.Listbox.options > .option > .icon.selected {
+    @apply absolute inset-y-0 left-0 flex items-center pl-3 text-mainHover
+}

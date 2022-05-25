@@ -62,7 +62,7 @@ export const Jobs = db.define("jobs", {
     validate: { isUrl: { message: "URL is not valid" } },
   },
   job_desc: {
-    type: Sequelize.STRING,
+    type: Sequelize.TEXT,
     allowNull: true,
   },
   job_source: {

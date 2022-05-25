@@ -33,7 +33,6 @@ app.use((err, req, res, next) => {
         const message =
             err.message ||
             err.response?.data?.message ||
-            JSON.stringify(err) ||
             'An unknown error occurred'
         res.status(status).send({ message })
     }

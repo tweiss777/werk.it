@@ -7,18 +7,22 @@ export const customJoin = (arr, s1, s2) =>
 export const error = (status, message) => ({ error: { status, message } })
 
 export const cleanObject = o => {
-    for (const prop in o) if (!o) delete o[prop];
+    for (const prop in o) {
+        if (o[prop] === undefined) delete o[prop];
+    }
+    return o
 }
 
 export const translateFields = (fields) => {
     const {
         id,
         addedBy,
+        added_by,
         position,
         companyName,
         companyUrl,
         companyLogo,
-        jobDescription,
+        jobDesc,
         jobSource,
         jobPhase,
         jobStatus,
@@ -31,12 +35,12 @@ export const translateFields = (fields) => {
     
     const dbFields = {
         id,
-        added_by: addedBy,
+        added_by: addedBy || added_by,
         position,
         company_name: companyName,
         company_url: companyUrl,
         company_logo: companyLogo,
-        job_desc: jobDescription,
+        job_desc: jobDesc,
         job_source: jobSource,
         phase: jobPhase,
         status: jobStatus,
