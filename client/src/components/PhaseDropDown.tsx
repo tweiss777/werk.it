@@ -6,6 +6,10 @@ export default function PhaseDropDown() {
   const [phase, setPhase] = useState("application");
   console.log(phase);
 
+  useEffect(() => {
+    console.log(`current phase: ${phase}`);
+  });
+
   return (
     <div>
       <div className="font-bold">
