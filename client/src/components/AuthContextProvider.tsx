@@ -8,6 +8,7 @@ import axios from "axios";
 import { api, TOKEN, ACCESSTOKEN } from "../utils/api";
 import { getMaxListeners } from "process";
 import { response } from "express";
+import { IToken } from "../Interfaces/IToken";
 
 axios.defaults.withCredentials = true;
 export const axiosJWT = axios.create({
@@ -20,7 +21,7 @@ export const axiosJWT = axios.create({
 axios.defaults.headers.common = { Authorization: `bearer ${TOKEN}` };
 
 export default function AuthContextProvider({ children }) {
-  const [user, setUser] = useState(false);
+  const [user, setUser] = useState<boolean|Object>(false);
   const [token, setToken] = useState("");
   const [expire, setExpire] = useState(undefined);
   const [isLoading, setIsLoading] = useState(false);
@@ -101,7 +102,7 @@ export default function AuthContextProvider({ children }) {
       const response = await axios.get(`${api}/token`);
       console.log("response", response);
       setToken(response.data.accessToken);
-      const decoded: Object = jwtDecode(response.data.accessToken);
+      const decoded: IToken = jwtDecode(response.data.accessToken);
 
       if (decoded) {
         setUser(decoded.user);
