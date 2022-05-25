@@ -11,6 +11,11 @@ export default function PhaseDropDown() {
     console.log(`current phase: ${phase}`)
   })  
 
+function handlePhaseChange(phase_value: string){
+  setPhase(phase_value)
+  console.log(phase)
+}
+
 
   return (
     <div>
@@ -32,21 +37,21 @@ export default function PhaseDropDown() {
         >
           <option
             value={phase}
-            onChange={(e: React.ChangeEvent<HTMLOptionElement>) => setPhase(e.target.value)}
+            onChange={(e: React.ChangeEvent<HTMLOptionElement>) => handlePhaseChange(e.target.value)}
           >
             Application
           </option>
           <option
             value={phase}
             onChange={(e: React.ChangeEvent<HTMLOptionElement>) =>
-              setPhase(e.target.value)}
+              handlePhaseChange(e.target.value)}
           >
             Tech Interview
           </option>
           <option
             value={phase}
             onChange={(e: React.ChangeEvent<HTMLOptionElement>) =>
-              setPhase(e.target.value)
+              handlePhaseChange(e.target.value)
             }
           >
             HR Interview
@@ -54,7 +59,7 @@ export default function PhaseDropDown() {
           <option
             value={phase}
             onChange={(e: any) =>
-              setPhase((e.target as HTMLInputElement).value)
+              handlePhaseChange((e.target as HTMLInputElement).value)
             }
           >
             Home Assignment
@@ -62,7 +67,7 @@ export default function PhaseDropDown() {
           <option
             value={phase}
             onChange={(e: React.ChangeEvent<HTMLOptionElement>) =>
-              setPhase(e.target.value)
+              handlePhaseChange(e.target.value)
             }
           >
             <OfferSVG />
