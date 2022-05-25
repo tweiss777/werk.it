@@ -12,7 +12,7 @@ export const refreshToken = async (req, res, next) => {
     try {
         const refreshToken = req.cookies[tokenCookie]
         if (!refreshToken)
-            next({ status: 401, message: 'Refresh token was not found' })
+            return next({ status: 401, message: 'Refresh token was not found' })
         const user = await readUser({ refresh_token: refreshToken }, true)
         if (!user)
             return next({ status: 403, message: 'Refresh token is invalid' })
@@ -47,7 +47,7 @@ export const Login = async (req, res, next) => {
             httpOnly: true,
             maxAge: 24 * 60 * 60 * 1000,
         })
-        res.json({ accessToken })
+        res.json({ accessToken, refreshToken })
     } catch (err) {
         next(err)
     }

@@ -1,0 +1,30 @@
+.Dropdown {
+    @apply w-fit h-full;
+}
+
+.Dropdown .menu {
+    @apply relative inline-block text-right h-full z-40;
+}
+
+.Dropdown .menu .button {
+    @apply w-full h-full;
+}
+
+.Dropdown .menu .button .chevron {
+    @apply w-8 h-full;
+}
+
+.Dropdown .menuItems {
+    @apply absolute right-0 w-40 mt-2 origin-top-right bg-white divide-y divide-main divide-opacity-30 rounded-md shadow-lg border-opacity-10 ring-1 ring-mainHover ring-opacity-5 focus:outline-none text-right;
+}
+
+.Dropdown .menuItems .itemsGroup {
+    @apply px-1 py-1
+}
+
+.Dropdown .menuItems .menuItem {
+    @apply flex rounded-md items-center w-full px-2 py-2 text-sm text-right text-gray-900
+}
+.Dropdown .menuItems .menuItem.active {
+    @apply bg-mainHover text-white
+}

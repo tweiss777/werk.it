@@ -1,0 +1,36 @@
+.TextInput {
+    @apply text-main text-opacity-80 h-full flex flex-col gap-2 justify-center transition-all duration-300 text-xs;
+}
+
+.TextInput label {
+    @apply block font-bold;
+}
+.TextInput.required label::after {
+    @apply content-['*'] text-red-500 ml-0.5
+}
+.TextInput .container {
+    @apply p-0 m-0 border-b-2 border-main border-opacity-50 focus-within:border-mainHover focus-within:border-opacity-80 flex 
+}
+.TextInput .container:not(.area) {
+    @apply max-h-[2.8rem] 
+}
+.TextInput .container.area {
+    @apply border-2 rounded-lg p-1 border-opacity-40
+}
+.TextInput .container.noBorder {
+    @apply border-0
+}
+
+.TextInput.error .container {
+    @apply border-red-400 
+}
+.TextInput .container input, .TextInput .container textarea {
+    @apply min-h-[2rem] w-full px-2 py-2 text-base bg-transparent border-0 outline-none text-main focus:text-mainHover text-opacity-100  placeholder:text-main placeholder:text-opacity-50 focus:placeholder:text-opacity-0 transition-all duration-300 resize-none;
+}
+.TextInput .container input + div, .TextInput .container textarea + div {
+    @apply h-full w-min flex gap-2 mr-4
+}
+
+.TextInput input + div svg, .TextInput textarea + div svg {
+    @apply min-h-[1.5rem]
+}

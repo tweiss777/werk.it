@@ -49,25 +49,19 @@ export const loginUser = async (reqBody) => {
     if (!passwordOK) return error(400, 'Wrong Password')
 
     const keys = exposeAttributes(user.dataValues, publicAttributes)
-    console.log(keys)
-    const accessToken = jwt.sign(
-        { user: keys },
-        process.env.ACCESS_TOKEN_SECRET,
-        {
-            expiresIn: '15s',
-        }
-    )
-
-    const refreshToken = jwt.sign(
+    
+    const accessToken = await jwt.sign({ user: keys }, process.env.ACCESS_TOKEN_SECRET, {
+        expiresIn: '15s',
+    })
+    const refreshToken = await jwt.sign(
         { user: keys },
         process.env.REFRESH_TOKEN_SECRET,
         {
             expiresIn: '1d',
         }
     )
-
+    console.log(refreshToken)
     await updateUser(userId, { refresh_token: refreshToken })
-
     return { accessToken, refreshToken }
 }
 
