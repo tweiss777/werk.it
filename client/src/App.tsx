@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
+import LandingPage from "./components/LandingPage";
 import MenuBar from "./components/MenuBar";
 import NavigationBar from "./components/NavigationBar";
 import ProtectedRoute from "./components/ProtectedRoute";
@@ -11,15 +12,15 @@ import JobPopUp from "./modals/JobPopUp";
 import Dashboard from "./pages/Dashboard";
 
 function App() {
-  const { activeUser } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const { showNewJob } = usePopups();
-  console.log(`show new job ${showNewJob}`);
 
   return (
     <>
-      {{ activeUser } && (
-        <PopupProivder>
-          <BrowserRouter>
+      <BrowserRouter>
+        {user === undefined && <LandingPage />}
+        {user !== undefined && (
+          <PopupProivder>
             <NavigationBar />
             <div className="flex flex-row main-container">
               <MenuBar />
@@ -27,9 +28,9 @@ function App() {
                 <Route path="/dashboard" element={<Dashboard />} />
               </Routes>
             </div>
-          </BrowserRouter>
-        </PopupProivder>
-      )}
+          </PopupProivder>
+        )}
+      </BrowserRouter>
     </>
   );
 }

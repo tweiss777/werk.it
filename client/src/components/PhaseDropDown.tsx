@@ -3,12 +3,7 @@ import React, { useState, useEffect } from "react";
 import OfferSVG from "./OfferSVG";
 
 export default function PhaseDropDown() {
-  const [phase, setPhase] = useState("application");
-  console.log(phase);
-
-  useEffect(() => {
-    console.log(`current phase: ${phase}`);
-  });
+  const [phase, setPhase] = useState("application"); 
 
   return (
     <div>
@@ -16,7 +11,6 @@ export default function PhaseDropDown() {
         <select
           className={`first-letter:block w-52  py-2 px-3 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500 border-none ${phase}`}
           onChange={(e: any) => {
-            console.log(e.target.value);
             setPhase(e.target.value);
           }}
         >
