@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import CloseSVG from "../components/CloseSVG";
 import LogoSVG from "../components/LogoSVG";
 import { usePopups } from "../hooks/usePopups";
-import { IAppliedJob } from "../Interfaces/IAppliedJob";
 import '../styles/appliedjobpopup.css'
 import '../styles/jobpopup.css';
 
