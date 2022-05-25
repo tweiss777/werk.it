@@ -1,10 +1,16 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import OfferSVG from "./OfferSVG";
 
 export default function PhaseDropDown() {
-  const [phase, setPhase] = useState("");
+  const [phase, setPhase] = useState("application");
   console.log(phase);
+
+  useEffect(() => {
+
+    console.log(`current phase: ${phase}`)
+  })  
+
 
   return (
     <div>
@@ -26,24 +32,21 @@ export default function PhaseDropDown() {
         >
           <option
             value={phase}
-            onChange={(e: any) =>
-              setPhase((e.target as HTMLInputElement).value)
-            }
+            onChange={(e: React.ChangeEvent<HTMLOptionElement>) => setPhase(e.target.value)}
           >
             Application
           </option>
           <option
             value={phase}
-            onChange={(e: any) =>
-              setPhase((e.target as HTMLInputElement).value)
-            }
+            onChange={(e: React.ChangeEvent<HTMLOptionElement>) =>
+              setPhase(e.target.value)}
           >
             Tech Interview
           </option>
           <option
             value={phase}
-            onChange={(e: any) =>
-              setPhase((e.target as HTMLInputElement).value)
+            onChange={(e: React.ChangeEvent<HTMLOptionElement>) =>
+              setPhase(e.target.value)
             }
           >
             HR Interview
@@ -58,8 +61,8 @@ export default function PhaseDropDown() {
           </option>
           <option
             value={phase}
-            onChange={(e: any) =>
-              setPhase((e.target as HTMLInputElement).value)
+            onChange={(e: React.ChangeEvent<HTMLOptionElement>) =>
+              setPhase(e.target.value)
             }
           >
             <OfferSVG />
