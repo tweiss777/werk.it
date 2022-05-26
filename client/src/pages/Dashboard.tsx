@@ -13,9 +13,9 @@ export default function Dashboard() {
   const matchingJobs = 230;
   const { showNewJob } = usePopups();
   return (
-    <div className="font-inter w-full">
+    <div className="font-inter w-full ">
       {/* {showNewJob && <JobPopUp />}   */}
-      <div className="flex flex-col border-2 p-5 m-5 bg-white rounded-lg ">
+      <div className="flex flex-col border-2 p-5 m-5 bg-white rounded-lg min-h-full">
         <div className="flex flex-row justify-between">
           <AddButton /> <Search />
         </div>
@@ -25,7 +25,7 @@ export default function Dashboard() {
           </div>
           <FilterTab />
         </div>
-        <div className="border-outline border rounded-lg">
+        <div className="border-outline border rounded-lg grow flex-col">
           <Table />
         </div>
         <div>

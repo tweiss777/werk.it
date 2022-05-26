@@ -19,16 +19,18 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        {user === undefined && <LandingPage />}
-        {user !== undefined && (
+        {!user && <LandingPage />}
+        {user && (
           <PopupProivder>
-            <NavigationBar />
-            <div className="flex flex-row main-container">
-              <MenuBar />
-              <Routes>
-                <Route path="/dashboard" element={<Dashboard />} />
-                <Route path="/wishlist" element={<Wishlist />} />
-              </Routes>
+
+            <div className="flex flex-col h-full">
+              <NavigationBar />
+              <div className="flex flex-row main-container grow">
+                <MenuBar />
+                <Routes>
+                  <Route path="/dashboard" element={<Dashboard />} />
+                </Routes>
+              </div>
             </div>
           </PopupProivder>
         )}

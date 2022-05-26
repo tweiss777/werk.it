@@ -2,6 +2,7 @@ import AuthContext from "../context/AuthContext";
 import React, { createContext, useContext, useEffect, useState } from "react";
 import jwtDecode from "jwt-decode";
 import axios from "axios";
+import useStickyState from "../hooks/useStickyState"
 // import { getCookie, setCookie } from "react-cookie";
 // import { api } from "../utils/utils";
 // import { AlertContext } from "./AlertContext";
@@ -21,8 +22,8 @@ export const axiosJWT = axios.create({
 axios.defaults.headers.common = { Authorization: `bearer ${TOKEN}` };
 
 export default function AuthContextProvider({ children }) {
-  const [user, setUser] = useState<boolean|Object>(false);
-  const [token, setToken] = useState("");
+  const [user, setUser] = useStickyState<boolean | Object>(false, 'user');
+  const [token, setToken] = useState('');
   const [expire, setExpire] = useState(undefined);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
@@ -34,6 +35,7 @@ export default function AuthContextProvider({ children }) {
         //if (expire * 1000 < new Date().getTime())
         // const response = await axios.get(`${api}/token`);
         const response = await axios.get("http://localhost:9000/token");
+        console.log("response interceptor", response);
         config.headers.Authorization = `Bearer ${response.data.accessToken}`;
         setToken(response.data.accessToken);
         const decoded = jwtDecode(response.data.accessToken);
@@ -47,8 +49,7 @@ export default function AuthContextProvider({ children }) {
   );
 
   useEffect(() => {
-    refreshToken();
-
+    // refreshToken(); //works
     // setExpire("");
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -72,8 +73,8 @@ export default function AuthContextProvider({ children }) {
     setIsLoading(true);
     try {
       const res = await axios.post(`${api}/login`, credential);
-
       setToken(res.data.accessToken);
+      await refreshToken();
     } catch (err) {
       setError(err);
     }
@@ -86,8 +87,8 @@ export default function AuthContextProvider({ children }) {
     try {
       // setCookie("refreshToken", "");
       // navigateTo("/");
-      setUser(false);
       await axios.delete(`${api}/logout`);
+      setUser(false);
     } catch (err) {
       setError(err);
     }
@@ -98,14 +99,13 @@ export default function AuthContextProvider({ children }) {
     if (isLoading) return;
     setIsLoading(true);
     try {
-      console.log("trying to get", `${api}/token`);
       const response = await axios.get(`${api}/token`);
-      console.log("response", response);
       setToken(response.data.accessToken);
       const decoded: IToken = jwtDecode(response.data.accessToken);
 
       if (decoded) {
         setUser(decoded.user);
+        console.log("decoded - user", decoded.user);
         setExpire(decoded.exp);
         //need to get rid of this error on line 107 + 108
       }

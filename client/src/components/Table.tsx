@@ -24,13 +24,13 @@ export default function Table() {
 
   
   return (
-    <>
+    <div className="grow">
       <Filterrow />
       <div className="job-info-container">
         {jobs.map( (job,index) => {
           return <Jobinfo position={job.position} company_name={job.company_name} date={job.createdAt} key={index} />;
         })}
       </div>
-    </>
+    </div>
   );
 }
