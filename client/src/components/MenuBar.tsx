@@ -18,7 +18,7 @@ function MenuBar({ isDisplayed }: IProps) {
   // if (!isDisplayed) return <></>;
   // else
     return (
-      <div className=" menu-bar-container">
+      <div className=" menu-bar-container sticky">
         <div className="menu-bar">
 
 

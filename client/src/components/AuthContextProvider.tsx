@@ -2,6 +2,7 @@ import AuthContext from "../context/AuthContext";
 import React, { createContext, useContext, useEffect, useState } from "react";
 import jwtDecode from "jwt-decode";
 import axios from "axios";
+import useStickyState from "../hooks/useStickyState"
 // import { getCookie, setCookie } from "react-cookie";
 // import { api } from "../utils/utils";
 // import { AlertContext } from "./AlertContext";
@@ -21,8 +22,8 @@ export const axiosJWT = axios.create({
 axios.defaults.headers.common = { Authorization: `bearer ${TOKEN}` };
 
 export default function AuthContextProvider({ children }) {
-  const [user, setUser] = useState<boolean | Object>(false);
-  const [token, setToken] = useState("");
+  const [user, setUser] = useStickyState<boolean | Object>(false, 'user');
+  const [token, setToken] = useState('');
   const [expire, setExpire] = useState(undefined);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");

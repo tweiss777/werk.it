@@ -1,4 +1,4 @@
-const PORT = 9000;
+const PORT = process.env.REACT_APP_PORT || 5000;
 const SERVER_HOST = "localhost";
 export const api = `http://${SERVER_HOST}:${PORT}`;
 

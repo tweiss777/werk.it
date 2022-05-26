@@ -22,7 +22,7 @@ export default function LandingPage() {
     }
   }
   return (
-    <div className="flex flex-col justify-center items-center gap-0  h-screen w-screen w-screen  content-center justify-self-center">
+    <div className="flex flex-col justify-center items-center gap-0  h-screen w-screen  content-center justify-self-center">
       <div>
     <LogoLandingPageSVG />
       </div>
